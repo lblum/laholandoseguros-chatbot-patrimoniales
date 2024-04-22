@@ -1,0 +1,65 @@
+{
+    "userData": {
+        "variables": {
+            "actionCallerOperatorId": "VldWNyXLOFWauapj4vNp4SoLfnL2",
+            "fromName": "Ayelen Moreno",
+            "IdSession": "3396727442",
+            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTM4MDYyMDcsImV4cCI6MTcxMzgwOTgwNywiYXVkIjoiaG9sYW5kb25ldCIsInBheWxvYWQiOnsicF9lcnJvciI6bnVsbCwicF9vX3Nlc2lvbiI6MzM5NjcyNzQ0Mn19.cjmUGAsn_HvpkKMQjQq5vkVmGAOsstXGYpo7Khvprj7Rx_5lvn0NhLztEIUWXo_T9p2YOfMywovsCEmKJZnblbd151k1bx_yQmU1qwa7HlEZre0EF_7PH_Xf3vZiYAoH3KVu7EQy964whbZzM7nYjZ3h3898-LA6aM850MOQjoo-9VZQeycO6g_u0BN0L_3IuLJnouHvn75OMoik5pkwH_WyrPtv2qHWLVkrp4t2UGUuooz3RtQ7AVaLF2jHzlbV1D0Gto2Up5kYMLYr1rlF8te_COB3EqL02qGJdTus0YSD2Yl3JMDVFO8htdYE0Fuq84HOr2Rjjfuewt9vTjTxRSH4SIldevvfiB9Dla1y7U8677RPhv844Y5_I7lNql2gz8ANn1IP6ftMTbMQ41QW_BLg3UlgkEMFseqeWDlrfe5eK1-Rf35iD6XGGz-OJDVVOK0DVHjzKP4LlaKlXnW_5_4feFa632H45WUaN1RkHwH5s5gdiI7bnDjH6wILfmS9JWoufwGfUyatgKHEH3vRZoaJHGZp_NO0ic6M4BUAy-eEhSMDmZzkR8upFzRdX9eXCJ1yvGDORoXdf8U9PMmAbjAqSfsZsvJvKTkKlN6Q27OFQG5DI_Q7m_isojJ2k9WxRPkN64xwKwQ-BNxNi2AZM0qH27XVXK6q9gv8wH3T6fs",
+            "IdSessionListas": "1241935552",
+            "JWTokenListas": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTM4MDY0NjQsImV4cCI6MTcxMzgxMDA2NCwiYXVkIjoibGlzdGFzIiwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjoxMjQxOTM1NTUyfX0.bW7kjfO6rRliK7RrlHTSXc-2vz6aac0F5kBLfNBl6nCHCi-hc8v4KFMjLf5N-ouKQZdezJcUI3p4tbZz8n6lZ-ngt2cqmiqnOcFfCfLWt56AG9274aKWJ3Qv-vIIjlpskwTXo7Gx1EjZB_4ctu-GMsAMtdiYgG-MrR4nvPRJV8AzRRowWo0U0gFmlQenq7bhXubnrNup29AqZUZH_TpphQTUucQMLdBVWaxUjg3oVkQzSQCB7ByoqKK-RJjd5GuNAyoD6TrrwkzcCKrZk92DMZzySAQ5s2uW_FKp7t2N92giwomZ2yOjPUB_2HFqZUmEkQGxgRXXASYvkjkbtqIQJQXnb1vZoxH9BOWNPDYPtSapT04EhqgyNdbVDcN3uHfvZ1ZOq46ey6gYNwUlsnCnUf8Lnf0a9Ldx3MyFsRt5lxxYcCyeYQTMbOb1pw2PpYEAyJBNcK5L5c6c6WK2qkJl2dGgvEKF66ywIE4XIsZddTe24JVLCRwGhPi2zoAa7dysGv0DhpLzk_IzZ7in2oUk1z4ziIcdOYGWVKCWo_E8HdO72sqbjW4-Rh6BoMSl6Zh0UXRYXMe2dvB_QM4HAb3P0cP9vxpqyKIs0uO4M5S4PiTAHK2sarFu577JLTnhgnlD_iKlMKNStxuB2i3UjFlkitaH7jcXbYbXm-LFO_-42ok",
+            "Asegurado": "[object Object]",
+            "IdSessionListados": "3044836138",
+            "JWTokenListados": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTM4MDY4OTYsImV4cCI6MTcxMzgxMDQ5NiwiYXVkIjoibGlzdGFkb3MiLCJwYXlsb2FkIjp7InBfZXJyb3IiOm51bGwsInBfb19zZXNpb24iOjMwNDQ4MzYxMzh9fQ.H9Qeo0jY6HFJ5N4JjNl4POfH56B6vsnGPb0sXtlCjScAkz6E3XnU_uy5R930ZIhbyQem_gz4pSGmo6VO4Qsa9y3ZvU-4X27gGxr0rWHjE3uCY6xfsp-2v5F6dvQFGP9K6l3p9MyDvC9kazdTjx6tEvQddH9fduXVWNOcOfl6okG7kGywoDDZnDyx1klXP0vj3sU5-N7g-sTnV7zA4Ne0_wP-lWeKYD5ZSlvSI0TzDh6dB9oCJ_ptDkjG9exjvdNuzVRU0NN78hBk-d3xH7CnsYBlvrm6ZDD6Rdrrq65KJr5tMWG6QCDnk-x9bcNIu2N44e_xkZqJ8s9JU2ZwrR0Vb0de49RATPK9ZFerEMeBacezOK6KJjKL5N0A8lUDa9CtB2ps2QV42XUdnSPa6VWdkrY-tjmKSPpAEllZt8W2lGqZu8YvpehF1k2u4w-I2tH5lpcnJHvYtGGRK43HJt-iXxPiyWvBJ7q91m_6b_IzcDIaUSYy5l2hO3Iv_RBZYsWpUt2Vob04pB16Q1Dgl78Snh2LgI1Wh-RTvf-NTHa8jkwfJAbN5IFIhaMUbORSl5gA7DaV6y8B8epB7Q3y-JELXYsv9dmtZ57qCT_b_N9ogvkENvaBS8mayBXOMBW-VfdLkvTlBXvxwrnAkMCqG2rOZyJARbGPgAtWCZUsxplfpNM",
+            "MediosDePago": "[object Object],[object Object],[object Object]"
+        },
+        "tags": [],
+        "PLATFORM_CONTACT_ID": "541525653239",
+        "ipAddress": "",
+        "messengerReferral": null,
+        "_id_": "D5IWC3TMRKUVJDS4JOPL",
+        "locale": "es",
+        "CHAT_CHANNEL_ID": "laholandoseguros-whatsapp-5491123586428",
+        "CHAT_PLATFORM_ID": "whatsapp",
+        "LAST_MODIFICATION": "2024-04-08T11:44:29.305Z",
+        "constants": "{}",
+        "LAST_SEEN": "2024-04-08T11:44:29.325Z",
+        "CURRENT_OPERATOR_EMAIL": "",
+        "HAS_TALKED": "true",
+        "EMAIL": null,
+        "BOT_MUTED": "false",
+        "PICTURE_URL": null,
+        "LAST_NAME": "Raul Omar",
+        "FIRST_NAME": "Negro",
+        "USER_ID_ON_BUSINESS": null,
+        "QUEUE": "_default_",
+        "LAST_SESSION_CREATION_TIME": "2024-04-08T11:44:29.258Z"
+    },
+    "message": {
+        "BUSINESS_ID": "laholandoseguros",
+        "CREATION_TIME": "2024-04-08T11:44:29.258Z",
+        "INTENT_ID": "MASTER_BOT_MAIN_INTENT",
+        "FROM_NAME": "Negro Raul Omar",
+        "CUSTOMER_ID": "D5IWC3TMRKUVJDS4JOPL",
+        "_id_": "ZE0YAG2ZEEAXVHGW8F1E",
+        "FROM": "541525653239",
+        "OBJECT_TYPE": "Message",
+        "QUEUE": "_default_",
+        "DEBUG": {
+            "wamsgid": "wamid.HBgNNTQ5MTEyNTY1MzIzORUCABIYIEM3RjhDODY1MzBERjZFNUZBQ0FBOEExNzREQ0U0NzRBAA==",
+            "changes": {
+                "typification": ""
+            },
+            "logs": [],
+            "events": [],
+            "lastBotLiteral": "¡Hola Negro! Bienvenido a La Holando Seguros"
+        },
+        "SESSION_CREATION_TIME": "2024-04-08T11:44:29.258Z",
+        "CHAT_CHANNEL_ID": "laholandoseguros-whatsapp-5491123586428",
+        "MESSAGE": ".",
+        "CHAT_PLATFORM_ID": "whatsapp",
+        "LAST_MODIFICATION": "2024-04-08T11:44:29.258Z",
+        "INDEX": 0,
+        "TO": "me"
+    },
+    "params": {}
+}
