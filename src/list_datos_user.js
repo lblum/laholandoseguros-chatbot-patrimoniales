@@ -1,5 +1,3 @@
-const { forEach } = require("lodash");
-
 const IS_TEST = user.get('botmakerEnvironment') === 'DEVELOPMENT';
 const BASE_URL = 'https://dhnet.laholando.com/';
 const LOGIN_URL = 'rws/listas/LIST_DATOS_USER';
