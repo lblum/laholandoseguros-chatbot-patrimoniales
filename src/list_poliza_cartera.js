@@ -15,24 +15,29 @@ let headers = {
 // Valores default para las pruebas
 
 let data =
-
 {
-  "p_poliza": "3061989",
-  "p_endoso": "0",
-  "p_cod_sec": "2",
-  "p_tipo_emi": "0",
-  "p_solicitud": "9061718",
-  "p_nro_rie": null,
-  "p_o_sesion": user.get('IdSessionListados'),
-
+  "p_cod_prod": user.get('CodProductor'),
+  "p_cod_asegu": null,
+  "p_cod_sec": null,
+  "p_cod_subramo": null,
+  "p_poliza": null,
+  "p_estado": null,
+  "p_endoso": null,
+  "p_medio_pago": null,
+  "p_tiene_siniestro": null,
+  "p_nropag": null,
+  "p_regxpag": 25,
+  "p_limite": 1000,
+  "p_o_sesion": user.get('IdSession')
 }
+
 
 /*
 if ( context.params.asegurado != null && context.params.asegurado != undefined )
   data.p_filtro = context.params.asegurado;
 */
 
-bmconsole.log(data)  ;
+bmconsole.log(data);
 
 rp({
   uri: url,
@@ -43,17 +48,16 @@ rp({
 }).then((resp) => {
 
   try {
-    user.set('Asegurado',resp.p_list_asegurados[0]);
-    bmconsole.log(resp.p_list_asegurados[0]);
-    
+    user.set('PolizaCartera', resp.p_list_poliza_cartera);
+
   } catch (error) {
-    user.set('Asegurado',null);
-    
+    user.set('PolizaCartera', null);
+
   }
 
   result.done();
 
 }).catch((err) => {
-  user.set('Asegurado',null);
-  result.done();      
+  user.set('PolizaCartera', null);
+  result.done();
 });

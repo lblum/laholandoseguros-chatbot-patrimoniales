@@ -2,7 +2,7 @@ const { forEach } = require("lodash");
 
 const IS_TEST = user.get('botmakerEnvironment') === 'DEVELOPMENT';
 const BASE_URL = 'https://dhnet.laholando.com/';
-const LOGIN_URL = 'rws/listas/LIST_PAS';
+const LOGIN_URL = 'rws/listas/LIST_DATOS_USER';
 
 
 let url = BASE_URL + LOGIN_URL;
@@ -32,17 +32,17 @@ rp({
 
   try {
     // Busco el primero que sea titular
-    let titular = resp.p_list_pas.find( element => element.estitular == 'S' );
-    user.set('Productor',titular);
-    bmconsole.log(titular);
+    let usr = resp.p_list_user[0];
+    user.set('CodProductor',usr.cod_prod);
+    bmconsole.log(usr);
     
   } catch (error) {
-    user.set('Productor',null);    
+    user.set('CodProductor',null);    
   }
 
   result.done();
 
 }).catch((err) => {
-  user.set('Productor',null);
+  user.set('CodProductor',null);
   result.done();      
 });

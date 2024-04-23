@@ -13,8 +13,8 @@ let headers = {
 // TODO: Pasar a constantes
 let data =
 {
-  "p_usuario": "PRODUSU",
-  "p_enc_pwd": "PRODUSU"
+  "p_usuario": "PRODVIS",
+  "p_enc_pwd": "PRODVIS"
 };
 
 rp({

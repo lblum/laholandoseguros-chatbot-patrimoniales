@@ -15,7 +15,7 @@ let headers = {
 // Valores default para las pruebas
 let data =
   {
-    "p_filtro": "20203840781",
+    "p_filtro": null,//"20203840781",
     "p_o_sesion": user.get('IdSessionListas'),
     "p_limite": 1000,
     "p_nropag": 0,

@@ -13,8 +13,8 @@ let headers = {
 // Valores default para las pruebas
 let data =
 {
-  "p_usuario": "SISTEMAS",
-  "p_enc_pwd": "SISTEMAS"
+  "p_usuario": "prodlhbas",
+  "p_enc_pwd": "prodlhbas"
 };
 
 if ( context.params.user != null && context.params.user != undefined )
@@ -33,10 +33,6 @@ rp({
 }).then((resp) => {
   user.set('IdSession', resp.payload.p_o_sesion);
   user.set('JWToken', resp.token);
-  if (IS_TEST) {
-    bmconsole.log(user.get('IdSession'));
-    bmconsole.log(user.get('JWToken'));
-  }
   result.done();
 
 }).catch((err) => {
