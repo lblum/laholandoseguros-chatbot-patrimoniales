@@ -1,0 +1,55 @@
+{
+    "userData": {
+        "variables": {
+            "opcionMenu": "Cobranzas",
+            "consultaPoliza": "certificado",
+            "tipoPoliza": "Volver",
+            "nombre": "Hola"
+        },
+        "tags": [],
+        "PLATFORM_CONTACT_ID": "IHETSYURKS-2725108BMRXGGS8MHO8LXS6ESCJ",
+        "ipAddress": "",
+        "messengerReferral": null,
+        "_id_": "E7CO3VCTMGMZUNTEWQ7Z",
+        "locale": "es",
+        "CHAT_CHANNEL_ID": "holandoseguros-webchat-null-IHETSYURKS",
+        "CHAT_PLATFORM_ID": "webchat",
+        "LAST_MODIFICATION": "2024-04-19T15:59:51.841Z",
+        "constants": "{}",
+        "LAST_SEEN": "2024-04-19T15:59:51.854Z",
+        "CURRENT_OPERATOR_EMAIL": "",
+        "HAS_TALKED": "true",
+        "EMAIL": null,
+        "BOT_MUTED": "false",
+        "PICTURE_URL": null,
+        "LAST_NAME": null,
+        "FIRST_NAME": null,
+        "USER_ID_ON_BUSINESS": null,
+        "QUEUE": null,
+        "LAST_SESSION_CREATION_TIME": "2024-04-19T15:44:04.064Z"
+    },
+    "message": {
+        "BUSINESS_ID": "holandoseguros",
+        "CREATION_TIME": "2024-04-19T15:59:50.842Z",
+        "INTENT_ID": "RuleBuilder:holandoseguros-ldzqf0s0wm@b.m-1713471245015",
+        "FROM_NAME": "Webchat-2725108",
+        "CUSTOMER_ID": "E7CO3VCTMGMZUNTEWQ7Z",
+        "_id_": "6ECupM7ejspApr7E1VZE",
+        "FROM": "IHETSYURKS-2725108BMRXGGS8MHO8LXS6ESCJ",
+        "OBJECT_TYPE": "Message",
+        "DEBUG": {
+            "changes": {},
+            "logs": [],
+            "events": [],
+            "lastBotLiteral": "También te puedo generar un cupón de pago. 😊\n\n¿Cómo seguimos?"
+        },
+        "SESSION_CREATION_TIME": "2024-04-19T15:44:04.064Z",
+        "CHAT_CHANNEL_ID": "holandoseguros-webchat-null-IHETSYURKS",
+        "MESSAGE": "{\"intent\":\"RuleBuilder:holandoseguros-ldzqf0s0wm@b.m-1713471245015\",\"button\":\"Generar cupón\",\"entities\":\"{}\"}",
+        "CHAT_PLATFORM_ID": "webchat",
+        "LAST_MODIFICATION": "2024-04-19T15:59:50.842Z",
+        "INDEX": 0,
+        "TO": "me"
+    },
+    "params": {}
+}
