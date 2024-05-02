@@ -1,46 +1,25 @@
-const IS_TEST = user.get('botmakerEnvironment') === 'DEVELOPMENT';
-const BASE_URL = 'https://dhnet.laholando.com/';
-const LOGIN_URL = 'rws/listas/LIST_DATOS_USER';
+const DATOS_URL = 'rws/listas/LIST_DATOS_USER';
 
+let utils = require('utils');
 
-let url = BASE_URL + LOGIN_URL;
-
-let headers = {
-  'Content-Type': 'application/json',
-  'X-authorization': 'Bearer ' + user.get('JWTokenListas')
-};
-
-
-
-// Valores default para las pruebas
 let data =
-  {
-    "p_o_sesion": user.get('IdSession'),
+{
+  "p_o_sesion": user.get('IdSession'),
 };
 
-bmconsole.log(data)  ;
+utils.loginListas();
 
-rp({
-  uri: url,
-  method: 'POST',
-  body: data,
-  json: true,
-  headers: headers
-}).then((resp) => {
+utils.getRESTData({
+  uri: DATOS_URL,
+  data: data,
+  token: user.get('JWTokenListas'),
 
-  try {
-    // Busco el primero que sea titular
+  ok: ((resp) => {
     let usr = resp.p_list_user[0];
-    user.set('CodProductor',usr.cod_prod);
-    bmconsole.log(usr);
-    
-  } catch (error) {
-    user.set('CodProductor',null);    
-  }
-
-  result.done();
-
-}).catch((err) => {
-  user.set('CodProductor',null);
-  result.done();      
+    user.set('CodProductor', usr.cod_prod);
+    user.set('nombre', usr.nombre_user);
+  }),
+  error: ((error) => {
+    user.set('CodProductor', null);
+  }),
 });
