@@ -1,16 +1,16 @@
 {
     "userData": {
         "variables": {
-            "opcionMenu": "Cobranzas",
-            "consultaPoliza": "certificado",
-            "tipoPoliza": "Volver",
-            "nombre": " LH BROKER ASESORES DE SEGUROS S.A.",
-            "IdSession": "9365851042",
-            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTQ2MzY1NTEsImV4cCI6MTcxNDY0MDE1MSwiYXVkIjoiaG9sYW5kb25ldCIsInBheWxvYWQiOnsicF9lcnJvciI6bnVsbCwicF9vX3Nlc2lvbiI6OTM2NTg1MTA0Mn19.jq15Al0WcP4vA4vUE1OkPiWWcjum6W4qzZ13JCzBRD8lfid7qrk4wKgLzxGC_ccJaFtZ4AL51Jsp7wFPvAcGKz6VCKoMoFzzbZjB0d3KZE32TeVomkQWn09YMSCL-hCAekQQMdgPIdQ9uvHyQhayIDGYxjHBJ9WTStybxLsyOcbZLZtfL8NzEuq7VlnU8LNvPhe4xof9dNzBV0nWxs1u1QCe0D2j3CBMHAFBP67NNuClVbQ0QQm52dGY9JHzshdukbTSiieUcV63I8tISD54dWsCI_GDBbIZWK_BChuJR-pAQeAP6mnmx_jji-gXhiOcFy9Xmphte_XlAoeHdEA4zOnyZOx70tGXc_6T8vwvyTvYa81td0GtNXuzBJEhkrdAEW1b06VFbOlwXWljEnTuU4TKFfRHhZ4A0VJytZjRxVs4mUH5mh5uoINonPO4B5vuJa7CvRVuWCCMx9nwrHldv6hB6-v-NjmH68TH0YcV1pfDkuoQ1acHmU6Y5MmZO55ge_vCGG9PR2ejXlgdOLTv-fCwuPPVoYAnMPcZDrI2jBnNPNacdl5r69DGvRgSRxiWCUxSbZwtwpT9IeJKaDERfXR1fDxfEMVUskH7R5aTvTuS-kDPz5oNGNOBlQ4N7o3PrFXb_0Rj5F8M_DQb17NHYraezwUGRm_lNOVBwviRUl8",
-            "error": "StatusCodeError: 401 - {\"error\":\"auth required\"}",
-            "CodProductor": "89935",
-            "IdSessionListas": "3780847238",
-            "JWTokenListas": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTQ2MzU3MDgsImV4cCI6MTcxNDYzOTMwOCwiYXVkIjoibGlzdGFzIiwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjozNzgwODQ3MjM4fX0.W8q1j4cLsizNnWsrEDlBeuxCYrA6vgsO-p68d0TjbvuIitis3JkFbToLJJb6j3MeBYBTWwH0oxNhO30NSB4L6Du4OPuQsu6KBd0lxqDGyBbxVs61oPA7v44r5jEIP2HYfJ3O_NixPCM6KIhjWI4HAykmFv-utf8ikj8-o-K0PLIESCU0QlQ08tKW9jn03SpSfFTw3AwhJ7hgOTTgHh5ufiATd4w1fy0T6Oqw-MUp6EfU4xSjyZgwHIgCWB0ESitleCzkvB6yqeYxWNdfOr5KabhKphfi7mxUh92Aenl548zFPFpZnFzoNy0_gJhrwv3oI8RiJKaPBGgWx5Re0F8I2_s3hMA5KTyy3EWcn7y1P-PC0WizSFiyeXJhjb_rTRs7IRS3LOz60gTFCywnJumEL8oJOdsm9O-C8LR-X4PCNniWkePblK616SjlF3j-r0oDobYw_dpAYpsrgWhJicEPn0Wtr4Hr02_eazC36MEA79kbS6fEvvSZmauCp1_V__ZpU6GrInSCxuDW0XSfEn4djmLSjsWM1jjS_uUTpNUWW1lyD5-tMl2pgxotj_BNTfr5iXfB1cOGvKOewQgGviXpIm6hqSxS-nCOuY24Jwa0tMUFJo8W0A2tNxQPCthDVTZHujimmrV8fD6diEOBAgCc99Bw7ajAWJj4uaCRGjzT7vQ"
+            "error": null,
+            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTQ2OTQ4MTgsImV4cCI6MTcxNDY5ODQxOCwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo2NjI3NDczMjIyfSwiYXVkIjoiaG9sYW5kb25ldCJ9.DL6ASfZjysJAr2qsTV6AnK5Uv96OUsdW-9oKiRKW2_tsw270tlcAA7RObpvk11C6XIQ-JWVhV6QJYwt8YkdVySBqbcs89hfmQ8osFDsoSMz_nXy3zYA6tkr3t_w9Bh_S6kBONE0pyHmr1tBr0NZjabPC6vfI6q7tQ0EQCQyc-1CGDyJiCDGBy-TV0_tom2Eo-37CinajzHEpWKIHUP7r-PQJQiKYaF6wPQbEBIYMqsuG01OKe8HEqQY2960m9FwgODQ_QlSB0UCCfINV951E_tsArUZBaOz2sP3h6KVA6D4u4x53dQ8c5zeb3qFh93AMQnib6de7zaAQIFAGNN8NBKWa7YyIzBiIC3-Qv6bYIXbryO3DI8_JBBdnLvF6sg8KHMBzNLfUGV5_-5BbgJ1rf6H5F5olpe3GK9Nnlr0TU8scNY97Z5FAVSN-hs6gf8aPNqmqRS4uxVEXBlpSXo0pvknCxuW2vSshB-WAe9E2r7Qurd4Q6xWjUJiNGV0zzvMeqxxZXQojFCdV2wS4CRCSSWZLAeyAYeoZ6BJM2M_Y5SJBgdR_rt9ilqiCUUUJRHUYV--YfKXS4mTW3LGPUIAcAcaqisHggbFmR2N6shDIvVrMy3uwrchmpUT9-10PspRmU7GnsRFhEoVP_cEe8DqN0Ft_x0LpEBqbGs43YxIj3-g",
+            "JWTokenListas": null,
+            "IdSession": "6627473222",
+            "CodProductor": "72832",
+            "nombre": "SEBASTIAN EDGARDO GUTIERREZ",
+            "IdSessionListas": "9839988264",
+            "IdSessionPoliza": "1892429278",
+            "JWTokenPoliza": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTQ2Njg5OTgsImV4cCI6MTcxNDY3MjU5OCwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjoxODkyNDI5Mjc4fSwiYXVkIjoicG9saXphIn0.WNE85WtcjXUmDpUq8Sn_nQ83-txDb9xdAR15OQmz-tDEO7Ce1InjGzj9G-zpfkbdIz9lvf4W3dg5tLJ6ovXwC4EEAaFrmhHb0WRzDJK2a3aVhj2_oTAJLOR02lZG9fCsgAUh3lgv0hrgAL-LKb1kLS8ylxqztOeezNwpO-OyqL35dd_QHE5NSw1lRHTsb0YjyGjFeVnPq8eQ45RZrgu71um72XccR3VWefGC05Bnk_A-DIp4TI0jYnJVr9SuSZ0oDa_9BhXGWsS35orQRUnz9Y4u0-JYF1LXsNWEtnFPw0Mt2epyLWVj0bGF-Q98eTn2-ilmfWvhej0Doj9Haxb3ojV6Mo7ySlfGYgMquXlbq7CIEX05npchLukBdcYm5pzsfxcDVNS-OLMxJpOjcPwsuPjwuxGnwVisfWVQCj4BjR30owlr8xGZtjoW_q-kC2B38iu1qR5T2saTVqp0GhLsprdX2H7yXAp0oO9etyXbMauHpAmpr8zPyq9530cjRX_JL3w_EHAkQRFUaiaXzdtTJKReN-FOASKxWS6iwH2mcE2vrzSf1TJrvN0rSWeNGo2euSqObMghtVMqppKl7SnqrO6EXgCYaYW_GWpstO2oaIKlBNjpwFuW7NH2hz_nO3q5kGTK-PUpuo8DQpHhZDx7e3czi-Cg8zkNBa0NAodl7ZM",
+            "Poliza": "{\"dominio\":\"AB130KH\",\"nro_rie\":1,\"poliza\":13056706,\"cod_sec\":3,\"desc_sec\":\"Automotores\",\"poliza_sec\":\"13056706 Automotores\",\"icono_seccion\":\"https://hnet.laholando.com/img/seccion03.png\"}"
         },
         "tags": [],
         "PLATFORM_CONTACT_ID": "IHETSYURKS-2725108BMRXGGS8MHO8LXS6ESCJ",

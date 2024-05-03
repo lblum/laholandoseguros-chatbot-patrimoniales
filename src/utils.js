@@ -1,6 +1,7 @@
 function getBaseURL() {
+
   //return 'https://nthnet.laholando.com/';
-  return 'https://dhnet.laholando.com/';
+  return 'https://hnet.laholando.com/';
 }
 
 function checkRESTError(resp) {
@@ -18,7 +19,7 @@ function checkRESTError(resp) {
 }
 
 function getRESTData(cfg) {
-  let url = utils.getBaseURL() + cfg.uri;
+  let url = this.getBaseURL() + cfg.uri;
 
   var headers = {
     'Content-Type': 'application/json'
@@ -29,7 +30,7 @@ function getRESTData(cfg) {
     headers['X-authorization'] = 'Bearer ' + cfg.token;
   }
 
-  rp({
+  return rp({
     uri: url,
     method: 'POST',
     body: cfg.data,
@@ -37,13 +38,15 @@ function getRESTData(cfg) {
     headers: headers
   })
     .then((resp) => {
-      let error = utils.checkRESTError(resp);
+      let error = this.checkRESTError(resp);
       if (error)
         throw new Error(error);
       if (cfg.ok)
         cfg.ok(resp);
     })
     .catch((error) => {
+      result.text(`[ERROR] : ${error.message}`);
+
       user.set('error', error);
       if (cfg.error)
         cfg.error(error);
@@ -51,7 +54,6 @@ function getRESTData(cfg) {
     .finally(() => {
       result.done();
     });
-
 }
 
 function isInvalidJWT(token) {
@@ -63,14 +65,15 @@ function isInvalidJWT(token) {
     return _.now() > jwtData['exp'] * 1000;
 
   } catch (error) {
-    bmconsole.log('-=[Error en la isJWTExpired]=-')
-    bmconsole.log(error);
+    if (token) {
+      bmconsole.log('-=[Error en la isJWTExpired]=-')
+      bmconsole.log(error);
+    }
   }
   return true;
 }
 
 function loginAuxiliar(sistema) {
-
 
   // TODO: Pasar a constantes
   let data =
@@ -83,7 +86,7 @@ function loginAuxiliar(sistema) {
 
   sistema = _.startCase(sistema);
 
-  utils.getRESTData({
+  return this.getRESTData({
     uri: uri,
     data: data,
     token: user.get('JWToken'),
@@ -100,12 +103,19 @@ function loginAuxiliar(sistema) {
 
 function loginListas() {
   // TODO: chequear errores
-  if (utils.isInvalidJWT(user.get('JWTokenListas')))
-    utils.loginAuxiliar('listas');
+  if (this.isInvalidJWT(user.get('JWTokenListas')))
+    return this.loginAuxiliar('listas');
 }
 
 function loginListados() {
   // TODO: chequear errores
-  if (utils.isInvalidJWT(user.get('JWTokenListados')))
-    utils.loginAuxiliar('listados');
+  if (this.isInvalidJWT(user.get('JWTokenListados')))
+    return this.loginAuxiliar('listados');
 }
+
+function loginPoliza() {
+  // TODO: chequear errores
+  if (this.isInvalidJWT(user.get('JWTokenPoliza')))
+    return this.loginAuxiliar('poliza');
+}
+
