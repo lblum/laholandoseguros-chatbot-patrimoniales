@@ -1,25 +1,25 @@
-function getBaseURL() {
+  getBaseURL: () => {
 
-  //return 'https://nthnet.laholando.com/';
-  return 'https://hnet.laholando.com/';
-}
+    //return 'https://nthnet.laholando.com/';
+    return 'https://hnet.laholando.com/';
+  },
 
-function checkRESTError(resp) {
+  checkRESTError : (resp) => {
 
-  try {
-    if (resp.hasOwn('payload') && resp.payload.hasOwn('p_error'))
-      return resp.payload.p_error;
-    if (resp.payload.hasOwn('p_error'))
-      return resp.payload.p_error;
+    try {
+      if (_.has(resp, 'payload') && _.has(resp.payload, 'p_error'))
+        return resp.payload.p_error;
+      if (_.has(resp, 'p_error') && resp.p_error != 0)
+        return resp.p_error;
 
-  } catch (error) {
-  }
-  return null;
+    } catch (error) {
+      bmconsole.log(error);
+    }
+    return null;
+  },
 
-}
-
-function getRESTData(cfg) {
-  let url = this.getBaseURL() + cfg.uri;
+getRESTData : async (cfg) => {
+  let url = utils.getBaseURL() + cfg.uri;
 
   var headers = {
     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ function getRESTData(cfg) {
     headers: headers
   })
     .then((resp) => {
-      let error = this.checkRESTError(resp);
+      let error = utils.checkRESTError(resp);
       if (error)
         throw new Error(error);
       if (cfg.ok)
@@ -54,9 +54,9 @@ function getRESTData(cfg) {
     .finally(() => {
       result.done();
     });
-}
+},
 
-function isInvalidJWT(token) {
+isInvalidJWT: (token) => {
   try {
     let parsedJWT = _.split(token, '.');
     // En el 2do está la expiración
@@ -71,9 +71,9 @@ function isInvalidJWT(token) {
     }
   }
   return true;
-}
+},
 
-function loginAuxiliar(sistema) {
+loginAuxiliar: async (sistema) => {
 
   // TODO: Pasar a constantes
   let data =
@@ -86,36 +86,34 @@ function loginAuxiliar(sistema) {
 
   sistema = _.startCase(sistema);
 
-  return this.getRESTData({
+  return await utils.getRESTData({
     uri: uri,
     data: data,
     token: user.get('JWToken'),
     ok: ((resp) => {
+      bmconsole.log(`Login ${sistema} OK`)
       user.set(`IdSession${sistema}`, resp.payload.p_o_sesion);
       user.set(`JWToken${sistema}`, resp.token);
     }),
     error: ((error) => {
+      bmconsole.error(`Login ${sistema} ${error}`)
       user.set(`IdSession${sistema}`, null);
       user.set(`JWToken${sistema}`, null);
     }),
   });
-}
+},
 
-function loginListas() {
-  // TODO: chequear errores
-  if (this.isInvalidJWT(user.get('JWTokenListas')))
-    return this.loginAuxiliar('listas');
-}
+ loginListas: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenListas')))
+    return await utils.loginAuxiliar('listas');
+},
 
-function loginListados() {
-  // TODO: chequear errores
-  if (this.isInvalidJWT(user.get('JWTokenListados')))
-    return this.loginAuxiliar('listados');
-}
+loginListados: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenListados')))
+    return utils.loginAuxiliar('listados');
+},
 
-function loginPoliza() {
-  // TODO: chequear errores
-  if (this.isInvalidJWT(user.get('JWTokenPoliza')))
-    return this.loginAuxiliar('poliza');
+loginPoliza: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenPoliza')))
+    return utils.loginAuxiliar('poliza');
 }
-

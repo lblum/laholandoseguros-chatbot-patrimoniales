@@ -5,21 +5,21 @@ let utils = require('utils');
 const main = async () => {
   user.set('error', null);
 
-
-  let x = await utils.loginListas();
-
   let data =
   {
     "p_o_sesion": user.get('IdSession'),
   };
 
+  bmconsole.log('list_datos_user');
 
-  return await utils.getRESTData({
+  return utils.getRESTData({
     uri: DATOS_URL,
     data: data,
     token: user.get('JWTokenListas'),
 
     ok: ((resp) => {
+      bmconsole.log('Ok -> list_datos_user');
+      bmconsole.log(JSON.stringify(resp));
       let usr = resp.p_list_user[0];
       user.set('CodProductor', usr.cod_prod);
       user.set('nombre', usr.nombre_user);
@@ -27,20 +27,18 @@ const main = async () => {
     error: ((error) => {
       user.set('CodProductor', null);
       user.set('nombre', null);
-      result.text(error);
+      throw new Error(error);
     }),
   });
-
 };
 
 main()
   .then((x) => {
-    ;
-   })
+    bmconsole.log(`List datos usuario OK`);
+  })
   .catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })
   .finally(() => {
-    // Code on finish
     result.done();
   });

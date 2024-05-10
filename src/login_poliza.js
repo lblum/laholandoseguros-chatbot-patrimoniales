@@ -3,7 +3,7 @@ let utils = require('utils');
 const main = async () => {
   user.set('error', null);
 
-  await utils.loginAuxiliar('listas');
+  await utils.loginAuxiliar('poliza');
 };
 
 main()
