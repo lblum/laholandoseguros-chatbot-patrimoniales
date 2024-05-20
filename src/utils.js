@@ -30,9 +30,11 @@ getRESTData : async (cfg) => {
     headers['X-authorization'] = 'Bearer ' + cfg.token;
   }
 
+  /*
   bmconsole.log(url);
   bmconsole.log(JSON.stringify(cfg.data));
   bmconsole.log(cfg.data.p_o_sesion);
+  */
 
   return rp({
     uri: url,

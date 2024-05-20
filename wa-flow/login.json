@@ -1,0 +1,58 @@
+{
+  "screens": [
+      {
+          "data": {
+          },
+          "id": "QUESTION_ONE",
+          "layout": {
+              "children": [
+                  {
+                      "children": [
+                          {
+                              "helper-text": "Ingresá tu usuario",
+                              "input-type": "text",
+                              "label": "Usuario",
+                              "name": "codUsuario",
+                              "required": true,
+                              "type": "TextInput"
+                          },
+                          {
+                              "helper-text": "Ingresá tu contraseña",
+                              "input-type": "text",
+                              "label": "Contraseña",
+                              "name": "userPassword",
+                              "required": true,
+                              "type": "TextInput"
+                          },
+                          {
+                              "text": ".",
+                              "type": "TextCaption"
+                          },
+                          {
+                              "text": "Olvidaste tu contraseña? https://olvide-mi-password.laholando.com",
+                              "type": "TextCaption"
+                          },
+                          {
+                              "label": "Iniciar sesión",
+                              "on-click-action": {
+                                  "name": "complete",
+                                  "payload": {
+                                      "codUsuario": "${codUsuario}",
+                                      "userPassword": "${userPassword}"
+                                  }
+                              },
+                              "type": "Footer"
+                          }
+                      ],
+                      "name": "flow_path",
+                      "type": "Form"
+                  }
+              ],
+              "type": "SingleColumnLayout"
+          },
+          "terminal": true,
+          "title": "Acessar"
+      }
+  ],
+  "version": "3.1"
+}

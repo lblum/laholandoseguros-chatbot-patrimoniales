@@ -12,25 +12,31 @@ const main = async () => {
     "p_endoso": 0
   };
 
-  let Poliza = JSON.parse("{\"dominio\":\"AB130KH\",\"nro_rie\":1,\"poliza\":13056706,\"cod_sec\":3,\"desc_sec\":\"Automotores\",\"poliza_sec\":\"13056706 Automotores\",\"icono_seccion\":\"https://hnet.laholando.com/img/seccion03.png\"}");
-  //,user.get('Poliza'));
+  let ordenPoliza = 0;
+
+  if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
+    data.p_cod_documento = context.params.p_cod_documento;
+
+  if (context.params.ordenPoliza != null && (context.params.ordenPoliza ?? '') != '')
+    ordenPoliza = context.params.ordenPoliza;
+
+  let Polizas = JSON.parse(user.get('Polizas'));
+  let Poliza = Polizas[ordenPoliza];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
+  let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;
 
   return await utils.getRESTData({
     uri: DOCUMENTO_POLIZA_URL,
     data: data,
     token: user.get('JWTokenPoliza'),
     ok: ((resp) => {
-      result.file(`data:application/pdf;base64,${resp.p_documento}`,'📄 Te comparto *la copia de tu póliza*:');
-      //debugger;
-      //user.set('copiaPoliza', resp.p_documento);
-      ;
+      result.file(`data:application/pdf;base64,${resp.p_documento}`, fileName);
     }),
     error: ((error) => {
       user.set('copiaPoliza', null);
-      result.text( `Hubo un error al traer el documento de la póliza: ${error}`)
-      ;
+      result.text(`Hubo un error al traer el documento de la póliza: ${error}`)
+        ;
     }),
   });
 

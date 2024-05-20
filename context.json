@@ -1,19 +1,6 @@
 {
     "userData": {
         "variables": {
-            "error": null,
-            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTUzNzMxNTQsImV4cCI6MTcxNTM3Njc1NCwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo3MDM4MTM4MDc0fSwiYXVkIjoiaG9sYW5kb25ldCJ9.UX6ANByVXO0aJM5NtztsJ6F2UnKw9caUAwE6sZoXOsB0KJLHOF25IwDXHGNVBQcisgtdDWosqkPrBSgJNNTsyOqA3p55EKz4qhUfHeVy0FfgBWmm39BuKETo-Tte1fluwXiT7PWRqG-L1YzWZomW7MIkiUYeN19M7hyADPnDnesqxH5oFtMKjPo6U7DYQWYAhZXfH3ZS7jcWweYItCiNZk18EZ6NWIVvUpEFhxi6iTYe8RGYBELxZwoHpt3LYsITTsUb33DewAbF5m8LYBeLUDgO3PGUbDivkMqB3KYXIxmpA7mkrnV0cUGJCB7-uymXRYbXoo5QulKYLDyKx71O_ZnHZ2seS0glf6tz2JXpwB8USjg-wCABd2Ilz1BnCaB4QFcoSPsHViwRremxvXYaNLgngAFXY6kd5_z2mkbxLp_tusxL6OP_X2m7fh6AcnKRdhTBBBsFEK6fsBwCqnlp8aFs9MMNvm8Rizlhpu3GgmtKWtv5nS981ev3JsnDTVZGp9gd94kzFP6ih70P81hW-oklt0pvrC9YJLmQTz163XQfLtUOmz0gVLDdFW7dAQhwgftNfqkaiRzlk7kfwZlqk_0PQ5v2OSXcq-5wu8TeR3hqgPIEucSQFiqofysuIft6bKHMlJAb6LS31irGWuKvXLIZ-9-JSQ2o_CwDIBSS9dI",
-            "JWTokenListas": null,
-            "JWTokenPoliza": null,
-            "IdSession": "7038138074",
-            "IdSessionListas": null,
-            "IdSessionPoliza": null,
-            "IdSessionListados": null,
-            "JWTokenListados": null,
-            "IdSessionGeneral": null,
-            "JWTokenGeneral": null,
-            "CodProductor": null,
-            "nombre": null
         },
         "tags": [],
         "PLATFORM_CONTACT_ID": "IHETSYURKS-2725108BMRXGGS8MHO8LXS6ESCJ",

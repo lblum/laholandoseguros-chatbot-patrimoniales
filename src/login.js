@@ -30,8 +30,6 @@ const main = async () => {
     data.p_enc_pwd = context.params.password;
 
 
-bmconsole.log('Dentro de la login 2');
-
   return await utils.getRESTData({
     uri: LOGIN_URL,
     data: data,
