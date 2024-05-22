@@ -51,7 +51,7 @@ getRESTData : async (cfg) => {
         cfg.ok(resp);
     })
     .catch((error) => {
-      result.text(`[ERROR] : ${error.message}`);
+      bmconsole.error(`[ERROR] : ${error.message}`);
 
       user.set('error', error);
       if (cfg.error)
@@ -111,12 +111,12 @@ loginAuxiliar: async (sistema) => {
 
  loginListas: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenListas')))
-    return await utils.loginAuxiliar('listas');
+    return utils.loginAuxiliar('listas');
 },
 
 loginListados: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenListados')))
-    return utils.loginAuxiliar('listados');
+    return await utils.loginAuxiliar('listados');
 },
 
 loginPoliza: async () => {

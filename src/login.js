@@ -18,17 +18,20 @@ const main = async () => {
   user.set('CodProductor' , null);
   user.set('nombre' , null);
   
+  /*
   let data =
   {
     "p_usuario": "PRODEGUTIERREZ",
     "p_enc_pwd": "20RBVIDEO22"
   }
+  */
 
-  if (context.params.user != null && (context.params.user?? '') != '')
-    data.p_usuario = context.params.user;
-  if (context.params.password != null && (context.params.password??'') != '')
-    data.p_enc_pwd = context.params.password;
-
+  let data =
+  {
+    "p_usuario": user.get("codUsuario")??"PRODEGUTIERREZ",
+    "p_enc_pwd": user.get("userPassword")??"20RBVIDEO22",
+    "p_cod_t_usuario": "P"
+  };
 
   return await utils.getRESTData({
     uri: LOGIN_URL,

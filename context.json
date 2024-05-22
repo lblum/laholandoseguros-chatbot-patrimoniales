@@ -1,6 +1,21 @@
 {
     "userData": {
         "variables": {
+            "error": "No hay pólizas con ese dominio",
+            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTYzODA3MTMsImV4cCI6MTcxNjM4NDMxMywicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjozMDgzNzczOTQ1fSwiYXVkIjoiaG9sYW5kb25ldCJ9.kZgaywjAWiAU9shzElnGowAj2juqraRcV3zNGK3gMwo0jEwk7Ez12cKAn8dd0VNsDGwBBZA-DayHwPG6mbCdWXuzUg0FF60-FAClyrDEDNvH27_0Iu8UnEzTNDZZ1Tg48xyO1XpaGHD9hedMgz2MhGmo62gFCv4dZ_bgdeCgZKHQC_iQUVI1GYZhmpe_s7B7PlvIGjygkt-tkuxDNSCSNzkjGOonRRysg9S4gJV9SGNqP4o0VYqnjIwXTivDuXaH0EkzcrWK20T4wFuMJr2LCuSy2aipm0W3hvz5IdWfYrcoJUQW1cFaUdJkrFg-yDdp4rMYgofymPVoi8nRoZpPy-ApP9vLqRCzUdhhPgb0DOAkNrIagqbO44xgDQrSok2efnfyM7QplJY1WNEi0oXqKh_5pYEVn7NqWBk7DXxo1WcgVVBEhQWNZqRJ_wEpTGfAKrqmX2vWz2hfHa5NAIItqUV28XUIyfffmkx8jpLmxBfTISyqkYP6tFko6jXEx5lx55Cgl4Ep-tpNTuvSwhCyp70hqHeB_XgWQ5_U6qFowMh97xlrDnUl1Zd6mjvf-dfX6dgnuRNn1rnITKzR-L4aG46WYIJkloqdvdBNRLV4ESuF-OdHVeBOuHP3zxv18jIk-fWLgiqnAEs962S4TBYKPF8B6ClOg9mYlrRTbK2zTMw",
+            "JWTokenPoliza": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTYzODM4NTYsImV4cCI6MTcxNjM4NzQ1NiwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo3NDI1OTYwNDAwfSwiYXVkIjoicG9saXphIn0.UgYlQwb_3bB8albV5a1NzUSGEt1dM3v5LMbNwHQO9cs227GzLrsgOmMO60oFty-RGK-UrpMDS-mVCP8HjxPjSnE1b0gcaiRBU73cLiYOnMZfnJN_Wt-ByC0THEGEBuFIkl_ceDV71sDHd-9DNID16FRQv59nmsK1IPyejaH8siRFZnr9s69NOhI-n8ja_zsld5M6PBs465xBi87szZFn_mu7uAHUDZNXUtGWB5EmBacRrrp1X0Vb2nxrEvms4UPFi6XJAoAoYe1p4OcfnNH_kC7w96szi5CwVgK0mSpFai33WQ031TIyvtIL8gAdsbl9roV1jjtNiTOUr6IY1MYBfG4jnyVwnMz9mWvjc8-0hyjEzde37TdkoaLGMfmNqkesgKrjrVpDALLmY7460ZhjygV3WL7AFAUa4RjQlAUn0Z58W3MElwloZrT4qxTYMLAFB8O1CCz1O0D020b5tWWlfyi1YPYBSa-cfDqmwX1ligxk-UmhazPrUQ1UPvpuo2MqL7EdMv4lbl5-u7RBMXjGNNrE37F21J0G68yBGEUI05X0IhF1cOS2Zvy4gQFFungs3FhnSy_ugJCrRlBvndhFNAbGIDNOp4Poqufv1PLfBFayqZ4dvkV9dhKcF_GyfTSZicqvyOE4TQ7f5cA42hOP4kYr2pqXW_l-8hI3h6xiTtg",
+            "IdSession": "3083773945",
+            "IdSessionPoliza": "7425960400",
+            "IdSessionListados": null,
+            "JWTokenListados": null,
+            "IdSessionGeneral": null,
+            "JWTokenGeneral": null,
+            "CodProductor": null,
+            "nombre": null,
+            "Poliza": null,
+            "IdSessionListas": "3571163452",
+            "JWTokenListas": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MTYzODQwNTIsImV4cCI6MTcxNjM4NzY1MiwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjozNTcxMTYzNDUyfSwiYXVkIjoibGlzdGFzIn0.DIBod-Na_1bRdP-h8dftt1Vjv6J4HsHU99W-Wiev7aAJ4FoEf4sscOtW3_OkD5CsPmRtT1H-9DAhf-JzOGWqOTDDgncfkSo-QO7i0KzBkq-OIi8ES4ZD6HF7n3VNM1tdNe3lJWN6L6-opjav-A5Tb9ms4zqW-HVYSFuDq-m8AjpwJEE1OgPAVrfDm30l1XqkYv9JlV-THi_JhbRdHNZ7HKt6q3ZMKqA9SBcWKKg2Mi4qzKMkfQEOoJcri9UaXwveBychuzqX6tp9PuAWoIzTEqCP3LaoQrea4vQHtjz10HlNoOoAPMKdHPVtbMuRRpxTwIyDR_RMLL-oItBklmO5x3iQyRp04d5CzGB2cZJKODgCvqboIyKMLmfr8slMA0xBRfXA9DAyer_JkJuLEkPxz-Aq0jnFBVH8cGgYqaavh485v3-sGchYAWgofq_YjOmpqu8Mc2Jq7juzMlk0mZnQllxIjxIuSRE0EuFWfKQt3I7MGH4d3-xxLimO7cCCzR-nUd4yar-Ow5SATnUChj6dVREJKN0db5XhA69fNwBuZx_n_l4r28ZJIdlLcCHkEgdCa1rKe1S_hq_edeS0JOuTQYKnMqWhQeW1apdhBGVJRK5zjdMKc0mE-kjaVkz2TwkLGysFso9YDFTtO5NP_EnTGI4kucbKfEbVf0llQKffkqo",
+            "Polizas": "[{\"dominio\":\"AB130KH\",\"nro_rie\":1,\"poliza\":13056706,\"cod_sec\":3,\"desc_sec\":\"Automotores\",\"poliza_sec\":\"13056706 Automotores\",\"icono_seccion\":\"https://hnet.laholando.com/img/seccion03.png\"}]"
         },
         "tags": [],
         "PLATFORM_CONTACT_ID": "IHETSYURKS-2725108BMRXGGS8MHO8LXS6ESCJ",
