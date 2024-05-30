@@ -1,10 +1,10 @@
 let utils = require('utils');
 
 const main = async () => {
-  user.set('JWTokenPoliza',null)
-  user.set('IdSessionPoliza',null)
-  await utils.loginAuxiliar('poliza');
+  user.set('error', null);
 
+  await utils.loginAuxiliar('denuncia_asegurado');
+};
 
 main()
   .catch(err => {

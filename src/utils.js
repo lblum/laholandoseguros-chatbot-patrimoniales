@@ -90,7 +90,7 @@ loginAuxiliar: async (sistema) => {
 
   let uri = `rws/${sistema}/login`;
 
-  sistema = _.startCase(sistema);
+  sistema = _.startCase(sistema).replace(' ','');
 
   return await utils.getRESTData({
     uri: uri,
@@ -122,4 +122,10 @@ loginListados: async () => {
 loginPoliza: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenPoliza')))
     return utils.loginAuxiliar('poliza');
+},
+
+loginDenunciaAsegurado: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenDenunciaAsegurado')))
+    return utils.loginAuxiliar('denuncia_asegurado');
 }
+
