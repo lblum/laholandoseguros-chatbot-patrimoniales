@@ -4,6 +4,7 @@ const main = async () => {
   user.set('JWTokenPoliza',null)
   user.set('IdSessionPoliza',null)
   await utils.loginAuxiliar('poliza');
+};
 
 
 main()
