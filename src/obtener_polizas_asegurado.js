@@ -9,7 +9,7 @@ const main = async () => {
 
   let data =
   {
-    "p_cod_asegu": null,
+    "p_cod_asegu": user.get('Asegurado').cod_asegurado,
     "p_cod_prod": user.get('CodProductor'),
     "p_cod_sec": "3", //3 -> automotores
     "p_cod_subramo": null,
@@ -20,7 +20,7 @@ const main = async () => {
     "p_nropag": 0,
     "p_regxpag": 25,
     "p_o_sesion": user.get('IdSession'),
-    "p_patente" : "AB130KH",
+    "p_patente" : null,
     "p_poliza": null,
     "p_tiene_siniestro": null,
     "p_regxpag": 25,
@@ -34,8 +34,14 @@ const main = async () => {
     token: user.get('JWTokenListados'),
 
     ok: ((resp) => {
-      user.set('Polizas', JSON.stringify(resp.p_list_poliza_cartera));
-      bmconsole.log('ok');
+      if (resp.p_list_poliza_cartera.length == 0 ) {
+        throw "No hay pólizas con ese asegurado";
+      } else {
+        if (resp.p_list_poliza_cartera.length >= 10 ) {
+          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo la primera`);
+        }
+      }
+      user.set('Polizas', JSON.stringify(resp.p_list_poliza_cartera.slice(0,1)));
     }),
     error: ((error) => {
       bmconsole.log('error');

@@ -30,6 +30,9 @@ const main = async () => {
 };
 
 main()
+  .then((x) => {
+    ;
+  })
   .catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })
