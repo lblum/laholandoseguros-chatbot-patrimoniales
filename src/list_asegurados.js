@@ -14,6 +14,8 @@ const main = async () => {
     "p_filtro": user.get('cuitAsegurado')??'27256265864',
     "p_regxpag": 10,
   };
+
+  user.set('Asegurado', null);
  
   return await utils.getRESTData({
     uri: OBTENER_ASEGURADO_URL,

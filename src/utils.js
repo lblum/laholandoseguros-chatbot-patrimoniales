@@ -22,7 +22,7 @@ getRESTData : async (cfg) => {
 
   // OJO!!!
   // Esto no debiera ser necesario (y es un problema para la seguridad)
-  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+  //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
   let url = utils.getBaseURL() + cfg.uri;
 
@@ -34,12 +34,6 @@ getRESTData : async (cfg) => {
   if (cfg.token) {
     headers['X-authorization'] = 'Bearer ' + cfg.token;
   }
-
-  /*
-  bmconsole.log(url);
-  bmconsole.log(JSON.stringify(cfg.data));
-  bmconsole.log(cfg.data.p_o_sesion);
-  */
 
   return rp({
     uri: url,
