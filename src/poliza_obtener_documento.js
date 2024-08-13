@@ -12,16 +12,12 @@ const main = async () => {
     "p_endoso": 0
   };
 
-  let ordenPoliza = 0;
-
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
     data.p_cod_documento = context.params.p_cod_documento;
 
-  if (context.params.ordenPoliza != null && (context.params.ordenPoliza ?? '') != '')
-    ordenPoliza = context.params.ordenPoliza;
-
   let Polizas = JSON.parse(user.get('Polizas'));
-  let Poliza = Polizas[ordenPoliza];
+  let index = user.get('index')??0;
+  let Poliza = Polizas[index];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
   let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;

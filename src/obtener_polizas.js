@@ -10,7 +10,7 @@ const main = async () => {
 
   let tipoPoliza = "3"; // TODO -> convertir
 
-  let tipoFiltro = user.get('tipoFiltro')?? 'C';
+  let tipoFiltro = user.get('tipoFiltro')?? 'D';
 
   let filtroPoliza = null;
 
@@ -30,7 +30,7 @@ const main = async () => {
     "p_cod_sec": tipoPoliza, //3 -> automotores
     "p_cod_subramo": null,
     "p_endoso": null,
-    "p_estado": null,
+    "p_estado": "VIG",
     "p_limite": 1000,
     "p_medio_pago": null,
     "p_nropag": 0,
@@ -53,15 +53,18 @@ const main = async () => {
       if (resp.p_list_poliza_cartera.length == 0 ) {
         throw "No hay pólizas con esos datos";
       } else {
-        if (resp.p_list_poliza_cartera.length >= 10 ) {
-          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo la primera`);
+        if (resp.p_list_poliza_cartera.length >= 4 ) {
+          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 4`);
+          resp.p_list_poliza_cartera = resp.p_list_poliza_cartera.slice(0,4);
         }
+        user.set('Polizas', JSON.stringify(resp.p_list_poliza_cartera));
       }
-      user.set('Polizas', JSON.stringify(resp.p_list_poliza_cartera.slice(0,1)));
+      user.set("cantidadDePolizas" , resp.p_list_poliza_cartera.length);
     }),
     error: ((error) => {
       bmconsole.log('error');
       user.set('Polizas', null);
+      user.set("cantidadDePolizas" , 0);
     }),
   });
 
