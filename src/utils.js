@@ -4,6 +4,35 @@
     return 'https://hnet.laholando.com/';
   },
 
+  getUniquePolizas: (polizas) => {
+    try {
+      let result = polizas.reduce((acc, d, index) => {
+        const found = acc.find(a => a.name === d.poliza);
+        if (!found) {
+          acc.push({
+            id: index,
+            name: d.poliza
+          });
+        }
+        return acc;
+      }, []);
+      result = result.sort( (a,b) => {
+        if ( a.name < b.name )
+          return -1;
+        if ( a.name > b.name )
+          return 1;
+        return 0;
+      });
+      result = result.map( (v) => {
+        return polizas[v.id];
+      });
+      return result;      
+    } catch (error) {
+      bmconsole.error(`Error en la getUniquePolizas -> ${err}`);
+      return [];
+    }
+
+  },
   checkRESTError : (resp) => {
 
     try {

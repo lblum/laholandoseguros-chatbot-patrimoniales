@@ -10,7 +10,7 @@ const main = async () => {
 
   let tipoPoliza = "3"; // TODO -> convertir
 
-  let tipoFiltro = user.get('tipoFiltro')?? 'D';
+  let tipoFiltro = user.get('tipoFiltro')?? 'C';
 
   let filtroPoliza = null;
 
@@ -53,13 +53,14 @@ const main = async () => {
       if (resp.p_list_poliza_cartera.length == 0 ) {
         throw "No hay pólizas con esos datos";
       } else {
-        if (resp.p_list_poliza_cartera.length >= 4 ) {
+        let polizas = utils.getUniquePolizas(resp.p_list_poliza_cartera);
+        if (polizas.length >= 4 ) {
           bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 4`);
-          resp.p_list_poliza_cartera = resp.p_list_poliza_cartera.slice(0,4);
+          polizas = polizas.slice(0,4);
         }
-        user.set('Polizas', JSON.stringify(resp.p_list_poliza_cartera));
+        user.set('Polizas', JSON.stringify(polizas));
+        user.set("cantidadDePolizas" , polizas.length);
       }
-      user.set("cantidadDePolizas" , resp.p_list_poliza_cartera.length);
     }),
     error: ((error) => {
       bmconsole.log('error');
