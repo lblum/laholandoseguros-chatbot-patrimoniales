@@ -16,7 +16,8 @@ const main = async () => {
     data.p_cod_documento = context.params.codDocumento;
 
   let Polizas = JSON.parse(user.get('Polizas'));
-  let index = user.get('index')??0;
+  bmconsole.log(`opcionPoliza -> ${user.get('opcionPoliza')}`);
+  let index = user.get('opcionPoliza')??0;
   let Poliza = Polizas[index];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;

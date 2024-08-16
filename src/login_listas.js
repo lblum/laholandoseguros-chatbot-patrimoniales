@@ -8,8 +8,10 @@ const main = async () => {
 };
 
 main()
-.then ( (x) => {} )
-.catch(err => {
+  .then ((x) => {
+    bmconsole.log(`JWTokenListas -> ${user.get('JWTokenListas')}`);
+  })
+  .catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })
   .finally(() => {

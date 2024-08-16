@@ -3,12 +3,15 @@ let utils = require('utils');
 const main = async () => {
   user.set('JWTokenPoliza',null)
   user.set('IdSessionPoliza',null)
-  await utils.loginAuxiliar('poliza');
+  return await utils.loginAuxiliar('poliza');
 };
 
 
 main()
-  .catch(err => {
+  .then((x) => {
+    ;
+  })
+.catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })
   .finally(() => {
