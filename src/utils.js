@@ -1,9 +1,47 @@
+  initData : () => {
+    let secciones = [
+      { id: 1, name:  'Incendios' },
+      { id: 2, name:  'Combinados' },
+      { id: 3, name:  'Autos y motos' },
+      { id: 4, name:  'Acc. del Trabajo' },
+      { id: 5, name:  'Cristales' },
+      { id: 6, name:  'Riesgos del Trabajo' },
+      { id: 7, name:  'Granizo' },
+      { id: 8, name:  'Responsab. Civil' },
+      { id: 9, name:  'Robo' },
+      { id: 10, name:  'Acc. Personales' },
+      { id: 11, name:  'Caución' },
+      { id: 12, name:  'Ganado' },
+      { id: 13, name:  'Motovehiculos' },
+      { id: 14, name:  'Aeronaves' },
+      { id: 15, name:  'Riesgos Varios' },
+      { id: 16, name:  'Seguro Tecnico' },
+      { id: 17, name:  'Inter. de la Explot.' },
+      { id: 18, name:  'Cascos' },
+      { id: 19, name:  'Transportes' },
+      { id: 20, name:  'P. & I.' },
+      { id: 21, name:  'Acc. Pers. PLENUS' },
+      { id: 22, name:  'Saldo Deudor' },
+      { id: 23, name:  'Vida Colectivos' },
+      { id: 24, name:  'Vida Individual' },
+      { id: 25, name:  'Vida Obligatorio' },
+      { id: 26, name:  'Vida Col. Abierto' },
+      { id: 27, name:  'Sepelio' }      
+    ];
+    user.set('listaSecciones',JSON.stringify(secciones));
+  },
   getBaseURL: () => {
 
     //return 'https://nthnet.laholando.com/';
     return 'https://hnet.laholando.com/';
   },
-
+  getSeccionByLabel: (label) =>{
+    let secciones = JSON.parse(user.get("listaSecciones"));
+    let found = secciones.find( (l) => l.name == label );
+    if (found) 
+        return found.value;
+    return 3; // TODO OJO!!!
+  },
   getUniquePolizas: (polizas) => {
     try {
       let result = polizas.reduce((acc, d, index) => {

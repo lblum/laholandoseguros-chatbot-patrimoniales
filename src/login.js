@@ -1,7 +1,7 @@
 const LOGIN_URL = 'rws/holandonet/login';
 
 const utils = require('utils');
-
+utils.initData();
 const main = async () => {
   
   user.set('error' , null);
@@ -17,6 +17,8 @@ const main = async () => {
   user.set('JWTokenGeneral' , null);
   user.set('CodProductor' , null);
   user.set('nombre' , null);
+  user.set('Polizas' , "");
+  user.set('listadoPolizas' , "qqrucho");
   
   let data =
   {

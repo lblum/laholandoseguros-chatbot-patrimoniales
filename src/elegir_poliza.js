@@ -10,7 +10,7 @@ if ( polizas != null ) {
   polizas.forEach ( (p) => {
     listadoPolizas.push({
       id : i,
-      name : `${p.poliza}/${p.endoso}`
+      name : `${p.poliza}`
     });
   });
   user.set('listadoPolizas',JSON.stringify(listadoPolizas));

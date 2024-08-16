@@ -13,13 +13,14 @@ const main = async () => {
   };
 
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
-    data.p_cod_documento = context.params.p_cod_documento;
+    data.p_cod_documento = context.params.codDocumento;
 
   let Polizas = JSON.parse(user.get('Polizas'));
   let index = user.get('index')??0;
   let Poliza = Polizas[index];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
+  //data.p_endoso = Poliza.endoso;
   let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;
 
   return await utils.getRESTData({
@@ -32,7 +33,7 @@ const main = async () => {
     error: ((error) => {
       user.set('copiaPoliza', null);
       result.text(`Hubo un error al traer el documento de la póliza: ${error}`)
-        ;
+        
     }),
   });
 
@@ -46,7 +47,7 @@ main()
 
   .catch(err => {
     bmconsole.error(`[ERROR]: ${err.message}`);
-    result.text(`[ERROR]: ${err.message}`);
+    result.text(JSON.parse(user.get('Polizas')));//`[ERROR]: ${err.message}`);
   })
   .finally(() => {
     // Code on finish

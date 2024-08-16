@@ -8,14 +8,14 @@ const main = async () => {
 
   let strTipoPoliza = user.get('tipoPoliza');
 
-  let tipoPoliza = "3"; // TODO -> convertir
+  let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltro = user.get('tipoFiltro')?? 'C';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
 
   let filtroPoliza = null;
 
   // Valores default para las pruebas
-  if ( tipoFiltro == 'C' ) {
+  if ( tipoFiltroPoliza == 'C' ) {
 
       filtroPoliza = JSON.parse(user.get('Asegurado')).cod_asegurado;
       // TODO -> try/catch
@@ -23,11 +23,12 @@ const main = async () => {
     filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
   }
 
+  
   let data =
   {
-    "p_cod_asegu": tipoFiltro == 'C' ? filtroPoliza : null,
+    "p_cod_asegu": tipoFiltroPoliza == 'C' ? filtroPoliza : null,
     "p_cod_prod": user.get('CodProductor'),
-    "p_cod_sec": tipoPoliza, //3 -> automotores
+    "p_cod_sec": utils.getSeccionByLabel(tipoPoliza), //3 -> automotores
     "p_cod_subramo": null,
     "p_endoso": null,
     "p_estado": "VIG",
@@ -36,13 +37,17 @@ const main = async () => {
     "p_nropag": 0,
     "p_regxpag": 25,
     "p_o_sesion": user.get('IdSession'),
-    "p_patente": tipoFiltro == 'D' ? filtroPoliza : null,
+    "p_patente": tipoFiltroPoliza == 'D' ? filtroPoliza : null,
     "p_poliza": null,
     "p_tiene_siniestro": null,
     "p_regxpag": 25,
     "p_tiene_siniestro": null
-  }
+  };
 
+  user.set('Polizas', []);
+  user.set("cantidadDePolizas" , 0);
+  user.set("listadoPolizas" , null);
+  
 
   return await utils.getRESTData({
     uri: POLIZAS_CARTERA_URL,
@@ -60,11 +65,12 @@ const main = async () => {
         }
         user.set('Polizas', JSON.stringify(polizas));
         user.set("cantidadDePolizas" , polizas.length);
+        user.set('listadoPolizas',JSON.stringify(data));
       }
     }),
     error: ((error) => {
       bmconsole.log('error');
-      user.set('Polizas', null);
+      user.set('Polizas', []);
       user.set("cantidadDePolizas" , 0);
     }),
   });
