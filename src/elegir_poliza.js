@@ -1,6 +1,7 @@
 
 const main = async () => {
-
+bmconsole.log('entrando en la elegir_poliza');
+bmconsole.log(user.get("Polizas"));
 let listadoPolizas = [];
 let polizas = user.get("Polizas");
 if ( polizas != null ) { 
@@ -12,8 +13,12 @@ if ( polizas != null ) {
       id : i,
       name : `${p.poliza}`
     });
+    i++;
   });
   user.set('listadoPolizas',JSON.stringify(listadoPolizas));
+  bmconsole.log(JSON.stringify(listadoPolizas));
+} else {
+  throw new Error('Error en la elegir_polizas');
 }
 
 };

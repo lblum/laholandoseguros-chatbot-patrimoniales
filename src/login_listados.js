@@ -3,10 +3,11 @@ let utils = require('utils');
 const main = async () => {
   user.set('error', null);
 
-  await utils.loginAuxiliar('listados');
+  return await utils.loginAuxiliar('listados');
 };
 
 main()
+  .then ( (x) => {} )
   .catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })

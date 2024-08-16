@@ -17,8 +17,8 @@ const main = async () => {
   user.set('JWTokenGeneral' , null);
   user.set('CodProductor' , null);
   user.set('nombre' , null);
-  user.set('Polizas' , "");
-  user.set('listadoPolizas' , "qqrucho");
+  user.set('Polizas' , null);
+  user.set('listadoPolizas' , null);
   
   let data =
   {

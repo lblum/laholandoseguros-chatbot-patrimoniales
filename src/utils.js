@@ -163,7 +163,6 @@ loginAuxiliar: async (sistema) => {
     data: data,
     token: user.get('JWToken'),
     ok: ((resp) => {
-      bmconsole.log(`Login ${sistema} OK`)
       user.set(`IdSession${sistema}`, resp.payload.p_o_sesion);
       user.set(`JWToken${sistema}`, resp.token);
     }),

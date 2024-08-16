@@ -3,14 +3,14 @@ let utils = require('utils');
 
 const main = async () => {
 
-  if (utils.isInvalidJWT(user.get('JWTokenListados')))
-    await utils.loginAuxiliar('listados');
+  /*if (utils.isInvalidJWT(user.get('JWTokenListados')))
+    await utils.loginAuxiliar('listados');*/
 
   let strTipoPoliza = user.get('tipoPoliza');
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
 
   let filtroPoliza = null;
 
@@ -44,12 +44,14 @@ const main = async () => {
     "p_tiene_siniestro": null
   };
 
-  user.set('Polizas', []);
+  bmconsole.log(`data ->${JSON.stringify(data)}`);
+
+  user.set('Polizas', JSON.stringify([]));
   user.set("cantidadDePolizas" , 0);
-  user.set("listadoPolizas" , null);
+  user.set("listadoPolizas" , JSON.stringify([]));
   
 
-  return await utils.getRESTData({
+  return utils.getRESTData({
     uri: POLIZAS_CARTERA_URL,
     data: data,
     token: user.get('JWTokenListados'),
@@ -65,13 +67,14 @@ const main = async () => {
         }
         user.set('Polizas', JSON.stringify(polizas));
         user.set("cantidadDePolizas" , polizas.length);
-        user.set('listadoPolizas',JSON.stringify(data));
       }
     }),
     error: ((error) => {
       bmconsole.log('error');
-      user.set('Polizas', []);
+      user.set('Polizas', JSON.stringify([]));
       user.set("cantidadDePolizas" , 0);
+      user.set("listadoPolizas" , JSON.stringify([]));
+      throw "No hay pólizas con esos datos";
     }),
   });
 
@@ -79,13 +82,12 @@ const main = async () => {
 
 main()
   .then((x) => {
-    ;
+    bmconsole.log('listo la obtener_polizas');
   })
   .catch(err => {
     // Code on error
     bmconsole.error(`[ERROR]: ${err.message}`);
   })
   .finally(() => {
-    // Code on finish
     result.done();
   });

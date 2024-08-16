@@ -21,6 +21,7 @@ const main = async () => {
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
   //data.p_endoso = Poliza.endoso;
+  bmconsole.log(`data -> ${JSON.stringify(data)}`)
   let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;
 
   return await utils.getRESTData({

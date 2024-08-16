@@ -4,11 +4,12 @@ const main = async () => {
   user.set('error', null);
   user.set('JWTokenListas',null);
   user.set('IdSessionListas',null);
-  await utils.loginListas();
+  return await utils.loginListas();
 };
 
 main()
-  .catch(err => {
+.then ( (x) => {} )
+.catch(err => {
     result.text(`[ERROR]: ${err.message}`);
   })
   .finally(() => {
