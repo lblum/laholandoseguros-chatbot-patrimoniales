@@ -186,6 +186,11 @@ loginListados: async () => {
     return await utils.loginAuxiliar('listados');
 },
 
+loginGeneral: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenGeneral')))
+    return await utils.loginAuxiliar('general');
+},
+
 loginPolizas: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenPoliza')))
     return utils.loginAuxiliar('poliza');

@@ -3,7 +3,7 @@ let utils = require('utils');
 
 const main = async () => {
 
-  await utils.loginAuxiliar('listados');
+  await utils.loginListados();
 
   let data = {
     "p_o_sesion": user.get('IdSession'),

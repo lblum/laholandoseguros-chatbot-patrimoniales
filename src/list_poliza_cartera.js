@@ -3,8 +3,7 @@ let utils = require('utils');
 
 const main = async () => {
 
-  await utils.loginAuxiliar('listados');
-
+  await utils.loginListados();
 
   let data =
   {
@@ -51,6 +50,7 @@ main()
   .catch(err => {
     // Code on error
     bmconsole.error(`[ERROR]: ${err.message}`);
+    usr.set('error',null);
   })
   .finally(() => {
     // Code on finish
