@@ -15,10 +15,13 @@ const main = async () => {
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
     data.p_cod_documento = context.params.codDocumento;
 
+  if (context.params.opcionPoliza != null && (context.params.opcionPoliza ?? '') != '')
+    opcionPoliza = context.params.opcionPoliza;
+
   let Polizas = JSON.parse(user.get('Polizas'));
   bmconsole.log(`opcionPoliza -> ${user.get('opcionPoliza')}`);
   let index = user.get('opcionPoliza')??0;
-  let Poliza = Polizas[index];
+  let Poliza = Polizas[opcionPoliza];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
   //data.p_endoso = Poliza.endoso;

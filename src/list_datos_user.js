@@ -4,6 +4,8 @@ const utils = require('utils');
 
 const main = async () => {
   user.set('error', null);
+  
+  await utils.loginListas();
 
   let data =
   {

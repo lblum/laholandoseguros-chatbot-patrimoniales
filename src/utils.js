@@ -124,7 +124,7 @@ getRESTData : async (cfg) => {
         cfg.error(error);
     })
     .finally(() => {
-      result.done();
+      //result.done();
     });
 },
 
@@ -170,13 +170,15 @@ loginAuxiliar: async (sistema) => {
       bmconsole.error(`Login ${sistema} ${error}`)
       user.set(`IdSession${sistema}`, null);
       user.set(`JWToken${sistema}`, null);
+      throw error;
     }),
   });
 },
 
  loginListas: async () => {
-  if (utils.isInvalidJWT(user.get('JWTokenListas')))
+  if (utils.isInvalidJWT(user.get('JWTokenListas'))) {
     return utils.loginAuxiliar('listas');
+  }
 },
 
 loginListados: async () => {
