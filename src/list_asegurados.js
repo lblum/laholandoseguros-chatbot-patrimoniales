@@ -6,6 +6,8 @@ const main = async () => {
 
   user.set('error',null);
 
+  await utils.loginListas();
+
   let data = {
     "p_o_sesion": user.get('IdSession'),
     "p_limite": 1000,

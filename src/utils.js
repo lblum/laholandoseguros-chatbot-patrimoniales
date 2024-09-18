@@ -186,7 +186,7 @@ loginListados: async () => {
     return await utils.loginAuxiliar('listados');
 },
 
-loginPoliza: async () => {
+loginPolizas: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenPoliza')))
     return utils.loginAuxiliar('poliza');
 },

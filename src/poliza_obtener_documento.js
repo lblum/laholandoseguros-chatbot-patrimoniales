@@ -3,10 +3,14 @@ const DOCUMENTO_POLIZA_URL = 'rws/poliza/OBTENER_DOCUMENTO';
 let utils = require('utils');
 
 const main = async () => {
+  user.set('error',null);
+
+  await utils.loginPolizas();
+
   let data =
   {
     "p_o_sesion": user.get('IdSession'),
-    "p_cod_documento": "CREDENCIAL",
+    "p_cod_documento": "CUPONERA",
     "p_cod_sec": 0,
     "p_poliza": 0,
     "p_endoso": 0
@@ -20,7 +24,7 @@ const main = async () => {
 
   let Polizas = JSON.parse(user.get('Polizas'));
   bmconsole.log(`opcionPoliza -> ${user.get('opcionPoliza')}`);
-  let index = user.get('opcionPoliza')??0;
+  let opcionPoliza = user.get('opcionPoliza')??0;
   let Poliza = Polizas[opcionPoliza];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
@@ -53,6 +57,7 @@ main()
   .catch(err => {
     bmconsole.error(`[ERROR]: ${err.message}`);
     result.text(JSON.parse(user.get('Polizas')));//`[ERROR]: ${err.message}`);
+    result.done();
   })
   .finally(() => {
     // Code on finish

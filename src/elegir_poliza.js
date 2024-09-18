@@ -1,6 +1,5 @@
 
 const main = async () => {
-bmconsole.log('entrando en la elegir_poliza');
 bmconsole.log(user.get("Polizas"));
 let listadoPolizas = [];
 let polizas = user.get("Polizas");

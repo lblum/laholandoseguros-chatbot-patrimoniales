@@ -3,8 +3,7 @@ let utils = require('utils');
 
 const main = async () => {
 
-  if (utils.isInvalidJWT(user.get('JWTokenListados')))
-    await utils.loginAuxiliar('listados');
+  await utils.loginAuxiliar('listados');
 
 
   let data =
