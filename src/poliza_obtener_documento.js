@@ -10,7 +10,7 @@ const main = async () => {
   let data =
   {
     "p_o_sesion": user.get('IdSession'),
-    "p_cod_documento": "CUPONERA",
+    "p_cod_documento": "CREDENCIAL",
     "p_cod_sec": 0,
     "p_poliza": 0,
     "p_endoso": 0
@@ -23,13 +23,11 @@ const main = async () => {
     opcionPoliza = context.params.opcionPoliza;
 
   let Polizas = JSON.parse(user.get('Polizas'));
-  bmconsole.log(`opcionPoliza -> ${user.get('opcionPoliza')}`);
   let opcionPoliza = user.get('opcionPoliza')??0;
   let Poliza = Polizas[opcionPoliza];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
   //data.p_endoso = Poliza.endoso;
-  bmconsole.log(`data -> ${JSON.stringify(data)}`)
   let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;
 
   return await utils.getRESTData({
@@ -42,7 +40,7 @@ const main = async () => {
     error: ((error) => {
       user.set('copiaPoliza', null);
       result.text(`Hubo un error al traer el documento de la póliza: ${error}`)
-        
+      user.set('error', null);        
     }),
   });
 
