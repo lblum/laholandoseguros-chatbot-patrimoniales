@@ -38,8 +38,9 @@ const main = async () => {
       result.file(`data:application/pdf;base64,${resp.p_documento}`, fileName);
     }),
     error: ((error) => {
+      bmconsole.log(`Hubo un error al traer el documento de la póliza: ${error}`)
+      result.text(`No existe ese tipo de documento para esa póliza`)
       user.set('copiaPoliza', null);
-      result.text(`Hubo un error al traer el documento de la póliza: ${error}`)
       user.set('error', null);        
     }),
   });

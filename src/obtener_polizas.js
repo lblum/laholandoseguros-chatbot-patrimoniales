@@ -9,7 +9,7 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
 
   let filtroPoliza = null;
 
@@ -19,8 +19,10 @@ const main = async () => {
       filtroPoliza = JSON.parse(user.get('Asegurado')).cod_asegurado;
       // TODO -> try/catch
   } else {
-    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
+    filtroPoliza = user.get('dominioAsegurado')??'Ab130KH';
+    
   }
+  filtroPoliza = filtroPoliza.toUpperCase()
 
   
   let data =
