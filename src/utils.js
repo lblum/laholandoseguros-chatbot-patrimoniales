@@ -1,9 +1,7 @@
   resetData : () => {
     user.set('error' , null);
-    user.set('JWToken' , null);
     user.set('JWTokenListas' , null);
     user.set('JWTokenPoliza' , null);
-    user.set('IdSession' , null);
     user.set('IdSessionListas' , null);
     user.set('IdSessionPoliza' , null);
     user.set('IdSessionListados' , null);
@@ -170,6 +168,9 @@ login: async () => {
 
 loginAuxiliar: async (sistema) => {
 
+  // Lo primero, es chequear el login
+  // OJO! esto debiera ir a la regla de login, pero por ahora no lo estoy logrando
+
   // TODO: Pasar a constantes
   let data =
   {
@@ -223,3 +224,51 @@ loginDenunciaAsegurado: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenDenunciaAsegurado')))
     return utils.loginAuxiliar('denuncia_asegurado');
 },
+
+login: async() => {
+  const LOGIN_URL = 'rws/holandonet/login';
+  utils.initData();
+
+  utils.resetData(); 
+
+  let isConnected = false;
+  if (utils.isInvalidJWT(user.get('JWToken'))) {
+    let pUsuario = user.get("codUsuario");
+    let pEncPwd = user.get("userPassword");
+    if ( pUsuario && pEncPwd ) {
+      // Trato de rehacer el login
+      // TODO: Si la sesion no está expirada, hacer el login x ahí
+      let data =
+      {
+        "p_usuario": user.get("codUsuario"),
+        "p_enc_pwd": user.get("userPassword"),
+        "p_cod_t_usuario": "P"
+      };
+      await utils.getRESTData({
+        uri: LOGIN_URL,
+        data: data,
+        ok: ((resp) => {
+          bmconsole.log(`Login OK ${resp.payload.p_o_sesion}`);
+          user.set('IdSession', resp.payload.p_o_sesion);
+          user.set('JWToken', resp.token);
+          isConnected = true;
+        }),
+        error: ((error) => {
+          bmconsole.log(`Error en el login ${error}`);
+          user.set('IdSession', null);
+          user.set('JWToken', null);
+        }),
+      });
+
+      // Si depués de todo esto no está conectado, voy a login
+    }
+  } else {
+    isConnected = true;
+  }
+
+  if ( !isConnected ){
+    result.text('Hubo un error al hacer la conexión');
+    throw "Error al hacer la conexión";
+  }
+
+}
