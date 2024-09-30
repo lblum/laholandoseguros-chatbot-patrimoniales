@@ -3,7 +3,7 @@ const LOGIN_URL = 'rws/holandonet/login';
 const utils = require('utils');
 utils.initData();
 const main = async () => {
-  
+
   user.set('error' , null);
   user.set('JWToken' , null);
   user.set('JWTokenListas' , null);
@@ -22,8 +22,8 @@ const main = async () => {
   
   let data =
   {
-    "p_usuario": user.get("codUsuario")??"PRODEGUTIERREZ",
-    "p_enc_pwd": user.get("userPassword")??"20RBVIDEO22",
+    "p_usuario": user.get("codUsuario"),
+    "p_enc_pwd": user.get("userPassword"),
     "p_cod_t_usuario": "P"
   };
 

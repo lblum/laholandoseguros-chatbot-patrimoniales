@@ -19,7 +19,7 @@ const main = async () => {
       filtroPoliza = JSON.parse(user.get('Asegurado')).cod_asegurado;
       // TODO -> try/catch
   } else {
-    filtroPoliza = user.get('dominioAsegurado')??'Ab130KH';
+    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
     
   }
   filtroPoliza = filtroPoliza.toUpperCase()
@@ -44,8 +44,6 @@ const main = async () => {
     "p_regxpag": 25,
     "p_tiene_siniestro": null
   };
-
-  bmconsole.log(`data ->${JSON.stringify(data)}`);
 
   user.set('Polizas', JSON.stringify([]));
   user.set("cantidadDePolizas" , 0);

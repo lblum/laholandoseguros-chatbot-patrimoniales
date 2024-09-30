@@ -1,7 +1,7 @@
 const DOCUMENTO_POLIZA_URL = 'rws/poliza/OBTENER_DOCUMENTO';
 
 let utils = require('utils');
-let sendFile = require('send_document');
+let sendFile = require('send_file');
 
 const main = async () => {
   user.set('error', null);
@@ -62,8 +62,8 @@ main()
   })
 
   .catch(err => {
-    //bmconsole.error(`[ERROR]: ${err}`);
-    //result.text(JSON.parse(user.get('Polizas')));//`[ERROR]: ${err.message}`);
+    bmconsole.error(`[ERROR]: ${err.message}`);
+    result.text(JSON.parse(user.get('Polizas')));//`[ERROR]: ${err.message}`);
   })
   .finally(() => {
     // Code on finish

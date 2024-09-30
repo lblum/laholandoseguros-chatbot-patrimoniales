@@ -1,3 +1,20 @@
+  resetData : () => {
+    user.set('error' , null);
+    user.set('JWToken' , null);
+    user.set('JWTokenListas' , null);
+    user.set('JWTokenPoliza' , null);
+    user.set('IdSession' , null);
+    user.set('IdSessionListas' , null);
+    user.set('IdSessionPoliza' , null);
+    user.set('IdSessionListados' , null);
+    user.set('JWTokenListados' , null);
+    user.set('IdSessionGeneral' , null);
+    user.set('JWTokenGeneral' , null);
+    user.set('CodProductor' , null);
+    user.set('nombre' , null);
+    user.set('Polizas' , null);
+    user.set('listadoPolizas' , null);    
+  },
   initData : () => {
     let secciones = [
       { id: 1, name:  'Incendios' },
@@ -87,10 +104,6 @@
 
 getRESTData : async (cfg) => {
 
-  // OJO!!!
-  // Esto no debiera ser necesario (y es un problema para la seguridad)
-  //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
-
   let url = utils.getBaseURL() + cfg.uri;
 
   var headers = {
@@ -138,11 +151,21 @@ isInvalidJWT: (token) => {
 
   } catch (error) {
     if (token) {
-      bmconsole.log('-=[Error en la isJWTExpired]=-')
+      bmconsole.log('-=[Error en la isInvalidJWT]=-')
       bmconsole.log(error);
     }
   }
   return true;
+},
+login: async () => {
+  // El login principal
+  if ( user.get('codUsuario') == "" ) {
+    // No hay usuario y password -> voy a la acciónde código que los pide
+    result.gotoRule('Inicio de sesión');
+  }
+  utils.resetData();
+  utils.initData();
+
 },
 
 loginAuxiliar: async (sistema) => {
@@ -199,5 +222,67 @@ loginPolizas: async () => {
 loginDenunciaAsegurado: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenDenunciaAsegurado')))
     return utils.loginAuxiliar('denuncia_asegurado');
-}
+},
 
+/*cb64toBlob = (b64Data, contentType='', sliceSize=512) => {
+  const byteCharacters = atob(b64Data);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+    
+  const blob = new Blob(byteArrays, {type: contentType});
+  return blob;
+},*/
+uploadFile: async (fileName, fileContent) => {
+  const platform = context.message.CHAT_PLATFORM_ID;
+  const appNumber = '5491138460183'; // TODO: sacarlo desde el contexto
+  const peerNumber = '5491150143462'; // TODO: sacarlo desde el contexto
+  const demoImg = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+  const blob =  Buffer.from(demoImg ,'base64') 
+  if ( platform !== 'whatsapp' ) {
+    // Armo el mensaje binario
+    let body = `chatPlatform:whatsapp\nchatChannelNumber:5491138460183\nplatformContactId:5491150143462\nmediaType:image/png\nfile:${demoImg}
+    `;
+    const url = 'https://go.botmaker.com/api/v1.0/message/binary/v3';
+  
+    const accessTokenV1 = 'eyJhbGciOiJIUzUxMiJ9.eyJidXNpbmVzc0lkIjoiaG9sYW5kb3NlZ3Vyb3MiLCJuYW1lIjoiTGlsaWFuYSBTaWx2YSIsImFwaSI6dHJ1ZSwiaWQiOiJCc1AxcVZBdjZTVGVpM2VvSk9VdWRYN3IyRzAyIiwiZXhwIjoxODcxNTc4Nzg1LCJqdGkiOiJCc1AxcVZBdjZTVGVpM2VvSk9VdWRYN3IyRzAyIn0.BCNWvf9uqejdRxjBI9-AlqLDUYGIXBGDx8kutmFsDLKHfayox1V2B3noK02j0OSCK3cij1_51e35MNU8kJSisA'
+  
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+    'Accept' : 'application/json',
+    'access-token':accessTokenV1,
+    };
+  
+ 
+    return rp({
+      uri: url,
+      method: 'POST',
+      body: body,
+      json: true,
+      headers: headers
+    })
+      .then((resp) => {
+    bmconsole.log('ok');
+      })
+      .catch((error) => {
+        bmconsole.error(`[ERROR] : ${error.message}`);
+  
+        user.set('error', error);
+      })
+      .finally(() => {
+      });
+    } else {
+    // Esto es solo para test
+    result.file(`data:application/pdf;base64,${fileContent}`,fileName);
+  }
+}
