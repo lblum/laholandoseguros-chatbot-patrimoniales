@@ -9,14 +9,14 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
 
   let filtroPoliza = null;
 
   // Valores default para las pruebas
   if ( tipoFiltroPoliza == 'C' ) {
 
-      filtroPoliza = JSON.parse(user.get('Asegurado')).cod_asegurado;
+      filtroPoliza = `${JSON.parse(user.get('Asegurado')).cod_asegurado}`;
       // TODO -> try/catch
   } else {
     filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
