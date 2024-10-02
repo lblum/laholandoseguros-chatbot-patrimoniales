@@ -268,7 +268,6 @@ login: async() => {
 
   if ( !isConnected ){
     result.text('Hubo un error al hacer la conexión');
-    throw "Error al hacer la conexión";
   }
 
 }
