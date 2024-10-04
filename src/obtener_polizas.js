@@ -9,7 +9,7 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
 
   let filtroPoliza = null;
 
@@ -19,7 +19,7 @@ const main = async () => {
       filtroPoliza = `${JSON.parse(user.get('Asegurado')).cod_asegurado}`;
       // TODO -> try/catch
   } else {
-    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
+    filtroPoliza = user.get('dominioAsegurado')??'NEM-830';
     
   }
   filtroPoliza = filtroPoliza.toUpperCase()
@@ -60,9 +60,9 @@ const main = async () => {
         throw "No hay pólizas con esos datos";
       } else {
         let polizas = utils.getUniquePolizas(resp.p_list_poliza_cartera);
-        if (polizas.length >= 4 ) {
-          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 4`);
-          polizas = polizas.slice(0,4);
+        if (polizas.length >= 10 ) {
+          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 10`);
+          polizas = polizas.slice(0,10);
         }
         user.set('Polizas', JSON.stringify(polizas));
         user.set("cantidadDePolizas" , polizas.length);

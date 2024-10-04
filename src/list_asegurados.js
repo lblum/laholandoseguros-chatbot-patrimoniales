@@ -25,9 +25,11 @@ const main = async () => {
     token: user.get('JWTokenListas'),
     ok: ((resp) => {    
       if (resp.p_list_asegurados.length == 0 ) {
-        throw "Asegurado inexistente";
-      }
-      user.set('Asegurado', JSON.stringify(resp.p_list_asegurados[0]));
+        result.text("No hay asegurados con esos datos");
+      } else if ( resp.p_list_asegurados.length > 1 ){
+          result.text("Hay mas de un asegurado con esos datos. Por favor, refine su búsqueda");
+      } else 
+        user.set('Asegurado', JSON.stringify(resp.p_list_asegurados[0]));
     }),
     error: ((error) => {
       user.set('Asegurado', null);
@@ -42,6 +44,7 @@ main()
   .catch(err => {
     // Code on error
     bmconsole.error(`[ERROR]: ${err.message}`);
+    result.text("Hubo un error al buscar los datos del asegurado");
   })
   .finally(() => {
     // Code on finish

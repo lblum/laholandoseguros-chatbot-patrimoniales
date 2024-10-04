@@ -169,6 +169,8 @@ login: async () => {
 loginAuxiliar: async (sistema) => {
 
   // Lo primero, es chequear el login
+  utils.login();
+  
   // OJO! esto debiera ir a la regla de login, pero por ahora no lo estoy logrando
 
   // TODO: Pasar a constantes
