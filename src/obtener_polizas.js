@@ -3,9 +3,13 @@ let utils = require('utils');
 
 const main = async () => {
 
-  await utils.loginListados();
+  user.set('Polizas', JSON.stringify([]));
+  user.set("cantidadDePolizas" , 0);
+  user.set("listadoPolizas" , JSON.stringify([]));
+  
 
-  let strTipoPoliza = user.get('tipoPoliza');
+
+  await utils.loginListados();
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
@@ -16,11 +20,13 @@ const main = async () => {
 
   // Valores default para las pruebas
   if ( tipoFiltroPoliza == 'C' ) {
-
-      filtroPoliza = `${JSON.parse(user.get('Asegurado')).cod_asegurado}`;
+    let asegurados = JSON.parse(user.get('Asegurados'));
+    let opcionAsegurado = JSON.parse(user.get('opcionAsegurado'));
+    let i = opcionAsegurado.id;
+    filtroPoliza = `${asegurados[i].cod_asegurado}`;
       // TODO -> try/catch
   } else {
-    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
+    filtroPoliza = user.get('dominioAsegurado')??'AB1301KH';
     // Para el caso de que la póliza tenga exactamente 6 dígitos, le agrego el -
     if ( filtroPoliza.length == 6 ) {
       filtroPoliza = filtroPoliza.substring(0,3) + '-' + filtroPoliza.substring(3,6);
@@ -49,11 +55,7 @@ const main = async () => {
     "p_tiene_siniestro": null
   };
 
-  user.set('Polizas', JSON.stringify([]));
-  user.set("cantidadDePolizas" , 0);
-  user.set("listadoPolizas" , JSON.stringify([]));
-  
-  return utils.getRESTData({
+  return await utils.getRESTData({
     uri: POLIZAS_CARTERA_URL,
     data: data,
     token: user.get('JWTokenListados'),

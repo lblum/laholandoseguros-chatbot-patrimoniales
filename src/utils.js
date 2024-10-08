@@ -11,6 +11,10 @@
     user.set('CodProductor' , null);
     user.set('nombre' , null);
     user.set('Polizas' , null);
+    user.set('Asegurados' , null);
+    user.set('Asegurado' , null);
+    user.set('cantidadDePolizas' , null);
+    user.set('cantidadDeAsegurados' , null);
     user.set('listadoPolizas' , null);    
   },
   listSecciones: async() => {

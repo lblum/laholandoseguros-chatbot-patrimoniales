@@ -13,8 +13,8 @@ const main = async () => {
     "p_limite": 1000,
     "p_nropag": 0,
     "p_cod_prod": user.get('CodProductor'),
-    "p_filtro": user.get('cuitAsegurado')??'27256265864',
-    "p_regxpag": 10,
+    "p_filtro": user.get('cuitAsegurado')??'CUBA',
+    "p_regxpag": 11,
   };
 
   user.set('Asegurado', null);
@@ -26,10 +26,25 @@ const main = async () => {
     ok: ((resp) => {    
       if (resp.p_list_asegurados.length == 0 ) {
         result.text("No hay asegurados con esos datos");
-      } else if ( resp.p_list_asegurados.length > 1 ){
-          result.text("Hay mas de un asegurado con esos datos. Por favor, refine su búsqueda");
-      } else 
-        user.set('Asegurado', JSON.stringify(resp.p_list_asegurados[0]));
+      } else {
+        let asegurados = [];
+
+        resp.p_list_asegurados.forEach( r => {
+          asegurados.push({
+            ape_nom_rsoc : r.ape_nom_rsoc,
+            cod_asegurado: r.cod_asegurado,
+          });
+        });
+
+        if (asegurados.length >= 10 ) {
+          bmconsole.error(`[ERROR]: demasiados asegurados con esos datos. Mostrando solo las primeros 10`);
+          asegurados = asegurados.slice(0,10);
+        }
+        user.set('Asegurado', JSON.stringify(asegurados[0]));
+        user.set('Asegurados', JSON.stringify(asegurados));
+        user.set("cantidadDeAsegurados" , asegurados.length);
+
+      }
     }),
     error: ((error) => {
       user.set('Asegurado', null);

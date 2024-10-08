@@ -20,16 +20,15 @@ const main = async () => {
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
     data.p_cod_documento = context.params.codDocumento;
 
-  if (context.params.opcionPoliza != null && (context.params.opcionPoliza ?? '') != '')
-    opcionPoliza = context.params.opcionPoliza;
-
   let strPolizas = user.get('Polizas');
   let Polizas = JSON.parse(strPolizas);
-  let opcionPoliza = user.get('opcionPoliza') ?? 0;
-  let Poliza = Polizas[opcionPoliza];
+  let opcionPoliza = JSON.parse(user.get('opcionPoliza'));
+  let i = opcionPoliza.id;
+  let Poliza = Polizas[i];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
   data.p_endoso = Poliza.endoso;
+  bmconsole.log(JSON.stringify(data));
   let fileName = `${data.p_cod_documento}-${data.p_poliza}.pdf`;
 
   let pDocumento = null;
