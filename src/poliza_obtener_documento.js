@@ -11,7 +11,7 @@ const main = async () => {
   let data =
   {
     "p_o_sesion": user.get('IdSession'),
-    "p_cod_documento": "CERTIFICADO_MERCOSUR_AUTOS",
+    "p_cod_documento": "CERTIFICADO_MERCOSUR_AUTOMOTORES",
     "p_cod_sec": 0,
     "p_poliza": 0,
     "p_endoso": 0

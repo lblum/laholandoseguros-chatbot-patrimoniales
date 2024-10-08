@@ -128,7 +128,14 @@
         return 0;
       });
       retVal = retVal.map( (v) => {
-        return polizas[v.id];
+        return {
+          cod_sec: polizas[v.id].cod_sec,
+          poliza: polizas[v.id].poliza,
+          endoso: polizas[v.id].endoso,
+          p_x_idriesgo: polizas[v.id].p_x_idriesgo,
+          tipo_emision: polizas[v.id].tipo_emision,
+        };
+        //return polizas[v.id];
       });
       return retVal;      
     } catch (error) {
