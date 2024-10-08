@@ -13,6 +13,43 @@
     user.set('Polizas' , null);
     user.set('listadoPolizas' , null);    
   },
+  listSecciones: async() => {
+    const DATOS_URL_SECCIONES = 'rws/listas/LIST_TIPOS_SECCIONES';
+
+    user.set('error', null);
+  
+    await utils.loginListas();
+  
+    let data =
+    {
+      "p_o_sesion": user.get('IdSession')
+    };
+  
+  
+    await utils.getRESTData({
+      uri: DATOS_URL_SECCIONES,
+      data: data,
+      token: user.get('JWTokenListas'),
+  
+      ok: ((resp) => {
+        let secciones = [];
+        let i = 0;
+        resp.p_list_tipos_secciones.forEach( (el) => {
+          secciones.push({
+            id : el.value,
+            name: el.label.split(' ').pop(),
+          });
+        });
+        user.set('listaSecciones',JSON.stringify(secciones));
+
+        ;
+      }),
+      error: ((error) => {
+        throw new Error(error);
+      }),
+    });
+  
+  },
   initData : () => {
     let secciones = [
       { id: 1, name:  'Incendios' },
@@ -59,29 +96,44 @@
   },
   getUniquePolizas: (polizas) => {
     try {
-      let result = polizas.reduce((acc, d, index) => {
-        const found = acc.find(a => a.name === d.poliza);
+      //result.text(polizas.length);
+      //result.text(JSON.stringify(polizas));
+      let i = 0;
+      let retVal = [];
+      try {
+        polizas.forEach(p => {
+          retVal.push({
+            id: i++,
+            name: `${p.poliza}/${p.endoso}`,
+          });      
+        });
+          
+      } catch (error) {
+        result.text(error)        ;
+      }
+
+      /*var retVal = polizas.reduce((acc, d, index) => {
+        
+        const found = false;//acc.find(a => (a.name == d.poliza  && a.endoso == d.endoso) );
         if (!found) {
-          acc.push({
-            id: index,
-            name: d.poliza
-          });
         }
         return acc;
       }, []);
-      result = result.sort( (a,b) => {
+  */
+      retVal = retVal.sort( (a,b) => {
         if ( a.name < b.name )
           return -1;
         if ( a.name > b.name )
           return 1;
         return 0;
       });
-      result = result.map( (v) => {
+      retVal = retVal.map( (v) => {
         return polizas[v.id];
       });
-      return result;      
+      return retVal;      
     } catch (error) {
-      bmconsole.error(`Error en la getUniquePolizas -> ${err}`);
+      bmconsole.error(`Error en la getUniquePolizas -> ${error}`);
+      result.text(JSON.stringify(error));
       return [];
     }
 
@@ -170,7 +222,7 @@ loginAuxiliar: async (sistema) => {
 
   // Lo primero, es chequear el login
   utils.login();
-  
+
   // OJO! esto debiera ir a la regla de login, pero por ahora no lo estoy logrando
 
   // TODO: Pasar a constantes
@@ -229,9 +281,6 @@ loginDenunciaAsegurado: async () => {
 
 login: async() => {
   const LOGIN_URL = 'rws/holandonet/login';
-  utils.initData();
-
-  utils.resetData(); 
 
   let isConnected = false;
   if (utils.isInvalidJWT(user.get('JWToken'))) {

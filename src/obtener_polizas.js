@@ -12,6 +12,7 @@ const main = async () => {
   let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
 
   let filtroPoliza = null;
+  user.set('error',null);
 
   // Valores default para las pruebas
   if ( tipoFiltroPoliza == 'C' ) {
@@ -19,8 +20,11 @@ const main = async () => {
       filtroPoliza = `${JSON.parse(user.get('Asegurado')).cod_asegurado}`;
       // TODO -> try/catch
   } else {
-    filtroPoliza = user.get('dominioAsegurado')??'NEM-830';
-    
+    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
+    // Para el caso de que la póliza tenga exactamente 6 dígitos, le agrego el -
+    if ( filtroPoliza.length == 6 ) {
+      filtroPoliza = filtroPoliza.substring(0,3) + '-' + filtroPoliza.substring(3,6);
+    }
   }
   filtroPoliza = filtroPoliza.toUpperCase()
 
@@ -49,7 +53,6 @@ const main = async () => {
   user.set("cantidadDePolizas" , 0);
   user.set("listadoPolizas" , JSON.stringify([]));
   
-
   return utils.getRESTData({
     uri: POLIZAS_CARTERA_URL,
     data: data,
@@ -83,8 +86,7 @@ main()
   .then((x) => {
     bmconsole.log('listo la obtener_polizas');
   })
-  .catch(err => {
-    // Code on error
+  .catch((err) => {
     bmconsole.error(`[ERROR]: ${err.message}`);
   })
   .finally(() => {
