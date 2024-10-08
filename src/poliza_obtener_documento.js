@@ -11,7 +11,7 @@ const main = async () => {
   let data =
   {
     "p_o_sesion": user.get('IdSession'),
-    "p_cod_documento": "CERTIFICADO_MERCOSUR_AUTOMOTORES",
+    "p_cod_documento": "CERTIF_MERCOSUR",
     "p_cod_sec": 0,
     "p_poliza": 0,
     "p_endoso": 0
@@ -22,8 +22,13 @@ const main = async () => {
 
   let strPolizas = user.get('Polizas');
   let Polizas = JSON.parse(strPolizas);
-  let opcionPoliza = JSON.parse(user.get('opcionPoliza'));
-  let i = opcionPoliza.id;
+  let i = 0;
+  try {
+    let opcionPoliza = JSON.parse(user.get('opcionPoliza'));
+    i = opcionPoliza.id;     
+  } catch (error) {
+    
+  }
   let Poliza = Polizas[i];
   data.p_cod_sec = Poliza.cod_sec;
   data.p_poliza = Poliza.poliza;
