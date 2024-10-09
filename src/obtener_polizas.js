@@ -13,7 +13,7 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza")??"Automotores";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'P';
 
   let filtroPoliza = null;
   user.set('error',null);
@@ -25,12 +25,14 @@ const main = async () => {
     let i = opcionAsegurado.id;
     filtroPoliza = `${asegurados[i].cod_asegurado}`;
       // TODO -> try/catch
-  } else {
+  } else if ( tipoFiltroPoliza == 'D' ) {
     filtroPoliza = user.get('dominioAsegurado')??'AB1301KH';
     // Para el caso de que la póliza tenga exactamente 6 dígitos, le agrego el -
     if ( filtroPoliza.length == 6 ) {
       filtroPoliza = filtroPoliza.substring(0,3) + '-' + filtroPoliza.substring(3,6);
     }
+  } else if ( tipoFiltroPoliza == 'P' ) {
+    filtroPoliza = user.get('numeroPoliza')??'13056706';
   }
   filtroPoliza = filtroPoliza.toUpperCase()
 
@@ -49,7 +51,7 @@ const main = async () => {
     "p_regxpag": 25,
     "p_o_sesion": user.get('IdSession'),
     "p_patente": tipoFiltroPoliza == 'D' ? filtroPoliza : null,
-    "p_poliza": null,
+    "p_poliza":  tipoFiltroPoliza == 'P' ? filtroPoliza : null,
     "p_tiene_siniestro": null,
     "p_regxpag": 25,
     "p_tiene_siniestro": null
@@ -62,8 +64,11 @@ const main = async () => {
 
     ok: ((resp) => {
       if (resp.p_list_poliza_cartera.length == 0 ) {
-        throw "No hay pólizas con esos datos";
-      } else {
+          user.set('Polizas', JSON.stringify([]));
+          user.set("cantidadDePolizas" , 0);
+          user.set("listadoPolizas" , JSON.stringify([]));
+          return;
+        } else {
         let polizas = utils.getUniquePolizas(resp.p_list_poliza_cartera);
         if (polizas.length >= 10 ) {
           bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 10`);
