@@ -248,7 +248,7 @@ login: async () => {
 loginAuxiliar: async (sistema) => {
 
   // Lo primero, es chequear el login
-  utils.login();
+  await utils.login();
 
   // OJO! esto debiera ir a la regla de login, pero por ahora no lo estoy logrando
 
@@ -359,7 +359,7 @@ getURLPolizaCopleta: async(poliza) => {
     "p_tipo_emi": poliza.tipo_emi,
     "p_solicitud":poliza.solicitud,
     "p_nro_rie": null,
-    "p_o_sesion": user.get('IdSession')
+    "p_o_sesion": user.get('IdSessionListas')
   };
 
   let urlPC = null;
@@ -378,6 +378,7 @@ getURLPolizaCopleta: async(poliza) => {
       return null;
     }),
   });
+  result.text(urlPC);
 
   return urlPC;
 

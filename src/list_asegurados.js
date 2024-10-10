@@ -13,7 +13,7 @@ const main = async () => {
     "p_limite": 1000,
     "p_nropag": 0,
     "p_cod_prod": user.get('CodProductor'),
-    "p_filtro": user.get('cuitAsegurado')??'ATTIS',
+    "p_filtro": user.get('cuitAsegurado'),
     "p_regxpag": 11,
   };
 

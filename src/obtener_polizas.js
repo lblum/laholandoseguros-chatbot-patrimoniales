@@ -11,7 +11,7 @@ const main = async () => {
 
   await utils.loginListados();
 
-  let tipoPoliza = user.get("tipoPoliza")??"Hogar";
+  let tipoPoliza = user.get("tipoPoliza");
 
   let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
 
@@ -43,7 +43,7 @@ const main = async () => {
   {
     "p_cod_asegu": tipoFiltroPoliza == 'C' ? filtroPoliza : null,
     "p_cod_prod": user.get('CodProductor'),
-    "p_cod_sec": utils.getSeccionByLabel(tipoPoliza), //3 -> automotores
+    "p_cod_sec": utils.getSeccionByLabel(tipoPoliza), 
     "p_cod_subramo": null,
     "p_endoso": null,
     "p_estado": "VIG",
