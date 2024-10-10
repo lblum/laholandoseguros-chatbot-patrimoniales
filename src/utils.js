@@ -51,11 +51,21 @@
       error: ((error) => {
         throw new Error(error);
       }),
-    });
-  
+    }); 
   },
-  initData : () => {
-    let secciones = [
+  getListaSeccionesLocal:  () =>{
+    return  [
+      { id: 3, name:  'Automotores' },
+      { id: 2, name:  'Hogar' },
+      { id: 2, name:  'Comercio' },
+      { id: 2, name:  'Consorcio' },
+      { id: 1, name:  'Incendio' },
+      { id: 10, name:  'Acc. Personales' },
+      { id: 21, name:  'Plenus' },
+      { id: 14, name:  'Aeronaves' },
+      { id: 18, name:  'Cascos' },
+    ];
+    /*
       { id: 1, name:  'Incendios' },
       { id: 2, name:  'Combinados' },
       { id: 3, name:  'Autos y motos' },
@@ -83,7 +93,11 @@
       { id: 25, name:  'Vida Obligatorio' },
       { id: 26, name:  'Vida Col. Abierto' },
       { id: 27, name:  'Sepelio' }      
-    ];
+       */
+
+  },
+  initData : () => {
+    let secciones = utils.getListaSeccionesLocal();
     user.set('listaSecciones',JSON.stringify(secciones));
   },
   getBaseURL: () => {
@@ -92,11 +106,11 @@
     return 'https://hnet.laholando.com/';
   },
   getSeccionByLabel: (label) =>{
-    let secciones = JSON.parse(user.get("listaSecciones"));
+    let secciones = utils.getListaSeccionesLocal();
     let found = secciones.find( (l) => l.name == label );
     if (found) 
-        return found.value;
-    return 3; // TODO OJO!!!
+        return found.id;
+    return 0; // TODO OJO!!!
   },
   getUniquePolizas: (polizas) => {
     try {
@@ -137,6 +151,8 @@
           poliza: polizas[v.id].poliza,
           endoso: polizas[v.id].endoso,
           p_x_idriesgo: polizas[v.id].p_x_idriesgo,
+          tipo_emi: polizas[v.id].tipo_emi,
+          solicitud: polizas[v.id].solicitud,
           tipo_emision: polizas[v.id].tipo_emision,
         };
         //return polizas[v.id];
@@ -331,5 +347,38 @@ login: async() => {
   if ( !isConnected ){
     result.text('Hubo un error al hacer la conexión');
   }
+
+},
+getURLPolizaCopleta: async(poliza) => {
+  await utils.loginListados();
+
+  let data = {
+    "p_poliza": poliza.poliza,
+    "p_endoso": poliza.endoso,
+    "p_cod_sec": poliza.cod_sec,
+    "p_tipo_emi": poliza.tipo_emi,
+    "p_solicitud":poliza.solicitud,
+    "p_nro_rie": null,
+    "p_o_sesion": user.get('IdSession')
+  };
+
+  let urlPC = null;
+
+  const POLIZA_COMPLETA_URL = 'rws/listados/LIST_IMPRESIONES';
+
+  await utils.getRESTData({
+    uri: POLIZA_COMPLETA_URL,
+    data: data,
+    token: user.get('JWTokenListados'),
+    ok: ((resp) => {
+      urlPC = resp.p_lnk_todos;
+    }),
+    error: ((error) => {
+      bmconsole.log(`Hubo un error al traer la póliza completa: ${error}`)
+      return null;
+    }),
+  });
+
+  return urlPC;
 
 }

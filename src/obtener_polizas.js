@@ -11,9 +11,9 @@ const main = async () => {
 
   await utils.loginListados();
 
-  let tipoPoliza = user.get("tipoPoliza")??"Automotores";
+  let tipoPoliza = user.get("tipoPoliza")??"Hogar";
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'P';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
 
   let filtroPoliza = null;
   user.set('error',null);
@@ -23,6 +23,7 @@ const main = async () => {
     let asegurados = JSON.parse(user.get('Asegurados'));
     let opcionAsegurado = JSON.parse(user.get('opcionAsegurado'));
     let i = opcionAsegurado.id;
+    //let i = 0;
     filtroPoliza = `${asegurados[i].cod_asegurado}`;
       // TODO -> try/catch
   } else if ( tipoFiltroPoliza == 'D' ) {
@@ -36,6 +37,7 @@ const main = async () => {
   }
   filtroPoliza = filtroPoliza.toUpperCase()
 
+  
   
   let data =
   {
