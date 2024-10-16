@@ -146,10 +146,10 @@
         if ( a.poliza > b.poliza )
           return +1;
 
-        if ( a.poliza == 0 )
-          return +1;
-        if ( b.poliza == 0 )
+        if ( a.endoso == '0' )
           return -1;
+        if ( b.endoso == '0' )
+          return +1;
 
         if ( a.fecha < b.fecha )
           return +1;
