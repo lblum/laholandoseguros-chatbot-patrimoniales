@@ -122,7 +122,9 @@
         polizas.forEach(p => {
           retVal.push({
             id: i++,
-            name: `${p.poliza}/${p.endoso}`,
+            fecha: moment(p.fec_vig,'DD/MM/YYYY'),
+            poliza: p.poliza,
+            endoso: p.endoso,
           });      
         });
           
@@ -139,10 +141,21 @@
       }, []);
   */
       retVal = retVal.sort( (a,b) => {
-        if ( a.name < b.name )
+        if ( a.poliza < b.poliza )
           return -1;
-        if ( a.name > b.name )
-          return 1;
+        if ( a.poliza > b.poliza )
+          return +1;
+
+        if ( a.poliza == 0 )
+          return +1;
+        if ( b.poliza == 0 )
+          return -1;
+
+        if ( a.fecha < b.fecha )
+          return +1;
+        if ( a.fecha > b.fecha )
+          return -1;
+
         return 0;
       });
       retVal = retVal.map( (v) => {
@@ -154,6 +167,7 @@
           tipo_emi: polizas[v.id].tipo_emi,
           solicitud: polizas[v.id].solicitud,
           tipo_emision: polizas[v.id].tipo_emision,
+          fec_vig: polizas[v.id].fec_vig,
         };
         //return polizas[v.id];
       });

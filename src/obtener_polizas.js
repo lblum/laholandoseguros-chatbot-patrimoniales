@@ -13,7 +13,7 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza");
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'C';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza')?? 'D';
 
   let filtroPoliza = null;
   user.set('error',null);
@@ -27,7 +27,7 @@ const main = async () => {
     filtroPoliza = `${asegurados[i].cod_asegurado}`;
       // TODO -> try/catch
   } else if ( tipoFiltroPoliza == 'D' ) {
-    filtroPoliza = user.get('dominioAsegurado')??'AB1301KH';
+    filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
     // Para el caso de que la póliza tenga exactamente 6 dígitos, le agrego el -
     if ( filtroPoliza.length == 6 ) {
       filtroPoliza = filtroPoliza.substring(0,3) + '-' + filtroPoliza.substring(3,6);

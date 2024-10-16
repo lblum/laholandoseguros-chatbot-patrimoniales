@@ -9,7 +9,7 @@ const main = async () => {
     polizas.forEach((p) => {
       listadoPolizas.push({
         id: i,
-        name: `${p.p_x_idriesgo}/${p.tipo_emision}`
+        name: `${p.p_x_idriesgo} ${p.fec_vig} \nEnd. ${p.endoso}/${p.tipo_emision}`
       });
       i++;
     });
