@@ -231,7 +231,6 @@ getRESTData : async (cfg) => {
       //result.done();
     });
 },
-
 isInvalidJWT: (token) => {
   try {
     let parsedJWT = _.split(token, '.');
@@ -363,37 +362,92 @@ login: async() => {
   }
 
 },
-getURLPolizaCopleta: async(poliza) => {
+blobToBase64: async (blob) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(blob);
+  return await new Promise(resolve => {
+    reader.onloadend = () => {
+      resolve(reader.result);
+    };
+  });
+},
+getPolizaCompleta: async (poliza) => {
+  let documento = await utils.getURLPolizaCompleta(poliza);
+
+  let error = utils.checkRESTError(documento);
+  if (error)
+    throw new Error(error);
+
+  let outData = null;
+
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+  };
+  
+  await fetch(documento.p_url,requestOptions)
+    .then((response) => 
+      response.blob()
+     )
+    .then( async (blob) => {
+      const arrayBuffer = await blob.arrayBuffer()
+      outData = Buffer.from(arrayBuffer)
+
+    })
+    .catch((error) => console.error(error));
+
+  /*
+  var headers = {
+    'Accept': '* /*',
+    'Accept-Encoding': 'gzip,deflate,br',
+    
+  };
+
+  await rp({
+    uri: documento.p_url,
+    method: 'GET',
+    //json: true,
+    headers: headers
+  }).then((resp) => {
+    outData = resp;
+  }).catch((error) => {
+    bmconsole.error(`[ERROR] : ${error.message}`);
+
+    user.set('error', error);
+  });
+
+  */
+  return outData.toString('base64');//Buffer.from(outData).toString('base64');
+},
+getURLPolizaCompleta: async(poliza) => {
   await utils.loginListados();
 
   let data = {
+    "p_o_sesion": user.get('IdSession'),
     "p_poliza": poliza.poliza,
-    "p_endoso": poliza.endoso,
     "p_cod_sec": poliza.cod_sec,
+    "p_endoso": poliza.endoso,
     "p_tipo_emi": poliza.tipo_emi,
     "p_solicitud":poliza.solicitud,
-    "p_nro_rie": null,
-    "p_o_sesion": user.get('IdSessionListas')
+    //"p_nro_rie": null,
   };
 
   let urlPC = null;
 
-  const POLIZA_COMPLETA_URL = 'rws/listados/LIST_IMPRESIONES';
+  const POLIZA_COMPLETA_URL = 'rws/listados/URLPOLCARTERA';
 
   await utils.getRESTData({
     uri: POLIZA_COMPLETA_URL,
     data: data,
     token: user.get('JWTokenListados'),
     ok: ((resp) => {
-      urlPC = resp.p_lnk_todos;
+      urlPC = resp;
     }),
     error: ((error) => {
       bmconsole.log(`Hubo un error al traer la póliza completa: ${error}`)
       return null;
     }),
   });
-  result.text(urlPC);
-
   return urlPC;
 
 }

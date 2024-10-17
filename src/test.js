@@ -6,6 +6,8 @@ user.set("tipoPoliza", 'Automotores');
 user.set("JWToken", null);
 
 let utils = require('utils');
+let sendFile = require('send_document');
+
 let Polizas = JSON.parse(user.get("Polizas"));
 let Poliza = Polizas[0];
 
@@ -13,8 +15,8 @@ let Poliza = Polizas[0];
 
 
 const main = async () => {
-  let url = await utils.getURLPolizaCopleta(Poliza);
-  result.text(url);
+  let pdf = await utils.getPolizaCompleta(Poliza);
+  sendFile.sendFile('xyzzy',pdf);
 };
 
 main()

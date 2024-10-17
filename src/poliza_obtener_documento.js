@@ -6,7 +6,7 @@ let sendFile = require('send_document');
 const main = async () => {
   user.set('error', null);
 
-  let codDocumento = null;
+  let codDocumento = 'EMISION_CATALOGADO_FIRMA';
 
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
     codDocumento = context.params.codDocumento;
@@ -24,10 +24,12 @@ const main = async () => {
   let Poliza = Polizas[i];
   let fileName = `${codDocumento}-${Poliza.poliza}.pdf`;
 
-  if (codDocumento == 'EMISION_CATALOGADO_FIRMA!!!' ) {
+  if (codDocumento == 'EMISION_CATALOGADO_FIRMA' ) {
     // Póliza completa es un caso especial
-    let url = await utils.getURLPolizaCopleta(Poliza);
-    result.file(url, `POLIZA-COMPLETA-${Poliza.poliza}.pdf`);
+    let doc = await utils.getPolizaCompleta(Poliza);
+    bmconsole.log(`${doc.length}`);
+    bmconsole.log(`${doc}`);
+    await sendFile.sendFile(`POLIZA-COMPLETA-${Poliza.poliza}.pdf`, doc);
   } else {
     await utils.loginPolizas();
 

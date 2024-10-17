@@ -2,15 +2,15 @@
     "userData": {
         "variables": {
             "listaSecciones": "[{\"id\":3,\"name\":\"Automotores\"},{\"id\":2,\"name\":\"Hogar\"},{\"id\":2,\"name\":\"Comercio\"},{\"id\":2,\"name\":\"Consorcio\"},{\"id\":1,\"name\":\"Incendio\"},{\"id\":10,\"name\":\"Acc. Personales\"},{\"id\":21,\"name\":\"Plenus\"},{\"id\":14,\"name\":\"Aeronaves\"},{\"id\":18,\"name\":\"Cascos\"}]",
-            "JWToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MjkxNjcwNTUsImV4cCI6MTcyOTE3MDY1NSwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo0Mzg1NDM2OTQ0fSwiYXVkIjoiaG9sYW5kb25ldCJ9.rSE2dmGLMN1VauSAZL4aF-fWCoJ2sORsTivZDf24gnO1JJu0GZMc6JPGOkWGtm_ZtW_Yq0cny0tPqFSkXXxG9K1wVT-4gxgpWWiwAehkpDTBGHscYsFF7ypeSFQn8j6-eq_hxQtCyRRtvsA_pvJ2SJDVd21oEC1t0Tb8816KiSjOPYME3o2_aKIcRfOQsK77wid3cMVz16oIdgOpyQ4zDARN6XgniYPpc9HDFX45FlUyBSM9aNWhZmnUe8TRAijZP1xprar4N5ujltR35IJdqDl8wJepflEAHggydKkrPjH_oR9vSkF1UE-5df42Er-p001JMp58wJc71fxkJGzZXPw799K-IOi_5htfDrvvItj_UFoYbcTvLtLLSbTKoxxFNhjjqexahJzunX_Mnt5LcuWe0NX9yCH9Fg9DUvTZbH8kq0eUF6o-ZgnyxqZo0Os-2W_xb4-aqcLbeYJVj98n0RY-k0H69XU-7y8JeCqgtKG2CRKbK6is7KQJQdo2FGg1hAJQP7lsnh6LxCg0te8ugk6QvCL7sDe1TFli407gkWqwkvcgHm0EJ9ivM8cRLtfy97NKJxbu0oAnXVldnPqWefUJB-2kG3CwcQJeg9pzCY2GuG_Hsza-5u30GrcOLU_Kg47LLxh9r8fbjr02jCbbPXkYygH7Fk_OHp6aKmkMGP8",
-            "IdSession": "4385436944",
+            "JWToken": null,
+            "IdSession": "1485790804",
             "error": null,
             "JWTokenListas": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MjkxNjcwNTUsImV4cCI6MTcyOTE3MDY1NSwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo2NzMxNzQ3NDc5fSwiYXVkIjoibGlzdGFzIn0.tCOsL1VCyipNd_OufAOuwsI215ArQ-rcWMvj1Hup9V7-sKIS2Jn8LP_irLIen8WIQqc-gjMjhWG6mec1aNxOAcqdPOfF4k7zjPTj08U4dDY5lJR1iBdEqnC5kjxTW2yt2yc7nWmOPG621GJg0QtIHQbqhv85I2TKiUDCfym4GnLFZbfOd7R38W_S3vdARGDQiUaT_2alegB2EJryT9gsAkUA38AWcDxKKhUeTTcPxpocZbbC1J4PZDaOgvMXs5Z2RCtRrEVk-CDT8ke6IlG1KlOXAVsBbgSz_vsSmd0AyudoUVmlDuQCkoEoHUmKM97e-S9QNCOgBqVqatEe0Jfj4rrDvYSgN2jjtVc2v5KEXY2-zeUQNF55AFEa3GrjXqWB4bLjrNHwRquDzH0Z740P49Y7qEmDMYIfhzYKFjFnEEGW-qUgDE7IO3ci9LCm2KLdaTh6DQkyEKUhdwwVf-u4NzmtH41GOIO9T-pjfHvjb-CY3cxrzpQ5uyh5QEREY0YmgY6FHClwHVMXhil7srY4OaC8sgu6Wkx2rXeEacQUXviymUFNCSU5R86XbLlbyjkzPougsZzoORBqYNVEERJPsHCvrvMbX6QBk6TB5g8qaAaryTIx53AhJzGCLLu2I7tha1dIkk4TM1L8DeZxfDEsPlWEmnReHFSPiwjqxGQ4NM4",
-            "JWTokenPoliza": null,
+            "JWTokenPoliza": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MjkxODg1OTIsImV4cCI6MTcyOTE5MjE5MiwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo5NTQxNDYxMDg0fSwiYXVkIjoicG9saXphIn0.Oh2gDvFSXZ5iM8kEQQlLHV-Xb-fPJlOPXDOgufEYdXM8uVB20QZvX9IUmi45K_qdY9YtcWjO4_bWzJF5lbTZIwaJbIEuX1aHdNN5K-SV7zC4HcJ4QiQDyA43jIjWWSsdmbFKWHdo0lVD2IgG1OvjDYexlceKgtXAQhtMwVCEQRW5e08k60DyKteiFGCBonjXAm5GhoeczDl1Wc2sZ7lxKil-SXkxeSMzBW_0Nf6neKmr-mT8xDMpVg6mrs_q58QNh_p3YV0kUaOmW6m8emUQADP4Z4DWc0DZ8ZpZyVfmDij9LHnan_8V-lYggupwvi63ZQUZuhS5QejMDLWFHX1gbA3zbOIkwT5x6q9nTZURtbIF9JduXKB842uBd4k8M6jhdAy0ai-bck6S83cVjsBXl4xJok4fG9Focw7XHjATXGWx0HD75W7Z89rVmQky0q6_ofEDtDhuxmlbn4Wmf4bDZnIapgOo_-yAP8cmWyN9TNr3XssK1AnPymUtYrGx-A5vJbQLuDRlA9Cb2a894ZjJvMb-doWwaUxlzMmOIGlVmBpa1hC0XRKg4R8sRiwcv-iUkXSNv9qzNkKSzx9D7YJRBCbuRh8aXS8-MyUrJSiq5xY1vLaLKZGcb_Cy860VzzFNaW3RGGOOLqKjuA3CFZyRpARLRUo1giw2AMjTIvfasBc",
             "IdSessionListas": "6731747479",
-            "IdSessionPoliza": null,
-            "IdSessionListados": "7265656725",
-            "JWTokenListados": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MjkxNjcxOTUsImV4cCI6MTcyOTE3MDc5NSwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjo3MjY1NjU2NzI1fSwiYXVkIjoibGlzdGFkb3MifQ.rM1F34zQXoGcstpibSk1E-Lz7MWI-6vz8OsZioG4SuXj69CD7eq0xZYNdLQB-cTSwmIGmWSWypoHbRIwqnIdt3xCTSornANQPA-2aPa_APNg5X69IZVt-L6VF5FukQzUtR37Zwc07vL3DnXFWQo_fwrxnSr2nQalvgF0QWddMsJfe_4-U-S80QiavO0VwGHc_0b_aVl_Isnb-Zb25ZqA6-UVi7qBS04BYnC2rM8dPvBj_7k8sF12qKSSCiHIoyi5hA5PnK9ZLXN6wdnnHxBNpL2COTFnu5jw7WnTLysJeprrdgBGgtJ6CUWDC37VXZB2j89Wna2VPAz-MaJV_PyQgtsBbP27yyN1-I7LjMfgazCXPnJd38X7_cvWxf2bgegn3V2sVgvh559vzNWz_0R1s7gTzcK8KfAFtC3Br5fiFyEdpm9tXfszRMYAKRm409N3oam_S2_ddtyMhBkfjSbd2uv9OdWZjmXt8Z8b6YXBoEFh41dtJMZHXZswrGLFdP3TX8PrRubwi_zJglivXTR9ErgHvvl1xI4yN1a_63niR6g43tnv2dvVbpLZJtAG1mLZQ66MHbkq0LlQakf7o5o8JNgzmIjPLtR5q99FoFFq7Cg7spJZMAlOkQkHCOiPoI8ozNI59Endzka-bNej0XFXiViy1e1eyKgPurP4xOd0XOg",
+            "IdSessionPoliza": "9541461084",
+            "IdSessionListados": "3772556603",
+            "JWTokenListados": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE3MjkxOTExMjksImV4cCI6MTcyOTE5NDcyOSwicGF5bG9hZCI6eyJwX2Vycm9yIjpudWxsLCJwX29fc2VzaW9uIjozNzcyNTU2NjAzfSwiYXVkIjoibGlzdGFkb3MifQ.ZGs6xcPcL0lgR541lpQPDWS6mUQf7dxZWAh08ON0CC4tTE3gmtcUNSQR2djx9qbB4UxnUo1jJuBhNx_glwnKVMCavIXZVdqWUnlsCRhXNErTqd5zaiHqe0fMcMk7EnMtSRxDLrChyzLLHeiYabRvgJ5VL5GCHWQsXwa9hjEBEzY8IWwmh-V3JLvf8ogXsvdZLtf6aVwNyzeSN2cKg4qSwLbJTuF9WiAZx1-D6EkR6nKD8aKVL1UyfUGU2DaDTJ4QVOA-EsAl7ZWowoDYHSHdGI6xMUXdimwcsJDPLf5qqJawKKHjDhB6doAjDaIHIT4fDx5jKGMBBwLVVmDS46dXhUoLsLji0dNjia7KPrhLU37OOOKJk38iaEgCUGYmrLoTNLBcHUA87FHL9T0Q2uFVHWsP-wH5jj8fkgg8dp3CEV7ZJk-Er33hlViRKyq-uRvVvJoP7AUduhnTsjpHtwUEe0mlWwwobZ0aWgZNdZt8RmI80N0vO-AKnTv2ufvbv80yyQrVEptsARGshTexOe75iW4y-WGR_36MjcDt1OXYvlxBgYI0vGHGmPIJ8lsLMbZS0gzT0WPPwFvZdU6lANCz3di9V62LxfmAHRcBlbCNWXaofLagQtSlqnbHqlMKbSEOkxnAYOTTZ__5-09CnFSKkqqUtPQZ26ceJpKS4rrfRrI",
             "IdSessionGeneral": null,
             "JWTokenGeneral": null,
             "CodProductor": "72832",
@@ -25,7 +25,7 @@
             "Asegurados": "[{\"ape_nom_rsoc\":\"CORONEL ATTIS MATEO JOSHUA\",\"cod_asegurado\":7696826}]",
             "cantidadDeAsegurados": "1",
             "listadoAsegurados": "[{\"id\":0,\"name\":\"7696826 CORONEL ATTIS MATEO JOSHUA\"},{\"id\":1,\"name\":\"7239092 CORONEL ATTIS MAXIMO JOAQUIN\"}]",
-            "tipoPoliza": "Incendio"
+            "tipoPoliza": "Automotores"
         }
     },
     "message": {

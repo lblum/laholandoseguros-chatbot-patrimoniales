@@ -9,7 +9,7 @@ const main = async () => {
     Asegurados.forEach((p) => {
       listadoAsegurados.push({
         id: i,
-        name: `${p.cod_asegurado} ${p.ape_nom_rsoc}`
+        name: `${p.ape_nom_rsoc} - ${p.cuit}`
       });
       i++;
     });

@@ -35,6 +35,7 @@ const main = async () => {
           asegurados.push({
             ape_nom_rsoc : r.ape_nom_rsoc,
             cod_asegurado: r.cod_asegurado,
+            cuit: `${r.cuit}`,
           });
         });
 
