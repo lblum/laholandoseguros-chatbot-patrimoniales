@@ -18,6 +18,8 @@ const main = async () => {
   };
 
   user.set('Asegurado', null);
+  user.set('Asegurados', null);
+  user.set("cantidadDeAsegurados", null);
  
   return await utils.getRESTData({
     uri: OBTENER_ASEGURADO_URL,
@@ -48,6 +50,8 @@ const main = async () => {
     }),
     error: ((error) => {
       user.set('Asegurado', null);
+      user.set('Asegurados', null);
+      user.set("cantidadDeAsegurados", null);
     }),
   });
 };

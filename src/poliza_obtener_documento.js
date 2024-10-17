@@ -43,7 +43,7 @@ const main = async () => {
 
     data.p_cod_sec = Poliza.cod_sec;
     data.p_poliza = Poliza.poliza;
-    data.p_endoso = '30';//Poliza.endoso;
+    data.p_endoso = Poliza.endoso;
     bmconsole.log(JSON.stringify(data));
 
     let pDocumento = null;

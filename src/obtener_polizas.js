@@ -21,10 +21,15 @@ const main = async () => {
   // Valores default para las pruebas
   if ( tipoFiltroPoliza == 'C' ) {
     let asegurados = JSON.parse(user.get('Asegurados'));
-    let opcionAsegurado = JSON.parse(user.get('opcionAsegurado'));
-    let i = opcionAsegurado.id;
-    //let i = 0;
-    filtroPoliza = `${asegurados[i].cod_asegurado}`;
+    let opcionAsegurado = null;
+    try{
+      opcionAsegurado = JSON.parse(user.get('opcionAsegurado'));
+      let i = opcionAsegurado.id;
+      filtroPoliza = `${asegurados[i].cod_asegurado}`;
+    } catch{
+      filtroPoliza = `${asegurados[0].cod_asegurado}`
+    }
+    
       // TODO -> try/catch
   } else if ( tipoFiltroPoliza == 'D' ) {
     filtroPoliza = user.get('dominioAsegurado')??'AB130KH';
@@ -65,19 +70,23 @@ const main = async () => {
     token: user.get('JWTokenListados'),
 
     ok: ((resp) => {
+      bmconsole.log('1');
       if (resp.p_list_poliza_cartera.length == 0 ) {
           user.set('Polizas', JSON.stringify([]));
           user.set("cantidadDePolizas" , 0);
           user.set("listadoPolizas" , JSON.stringify([]));
           return;
         } else {
-        let polizas = utils.getUniquePolizas(resp.p_list_poliza_cartera);
-        if (polizas.length >= 10 ) {
-          bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 10`);
-          polizas = polizas.slice(0,10);
-        }
-        user.set('Polizas', JSON.stringify(polizas));
-        user.set("cantidadDePolizas" , polizas.length);
+          bmconsole.log('2');
+          let polizas = utils.getUniquePolizas(resp.p_list_poliza_cartera);
+          bmconsole.log('3');
+          if (polizas.length >= 10 ) {
+            bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 10`);
+            polizas = polizas.slice(0,10);
+          }
+          user.set('Polizas', JSON.stringify(polizas));
+          user.set("cantidadDePolizas" , polizas.length);
+          bmconsole.log('3');
       }
     }),
     error: ((error) => {
