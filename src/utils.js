@@ -274,7 +274,7 @@ loginAuxiliar: async (sistema) => {
 
   let uri = `rws/${sistema}/login`;
 
-  sistema = _.startCase(sistema).replace(' ','');
+  sistema = _.startCase(sistema).replaceAll(' ','');
 
   return await utils.getRESTData({
     uri: uri,
@@ -317,6 +317,10 @@ loginPolizas: async () => {
 loginDenunciaAsegurado: async () => {
   if (utils.isInvalidJWT(user.get('JWTokenDenunciaAsegurado')))
     return utils.loginAuxiliar('denuncia_asegurado');
+},
+loginBotonPago: async () => {
+  if (utils.isInvalidJWT(user.get('JWTokenBotonPagoApp')))
+    return utils.loginAuxiliar('boton_pago_app');
 },
 
 login: async() => {

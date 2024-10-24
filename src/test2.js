@@ -1,114 +1,65 @@
-const getFeriados = async (year) => {
-
-  return await rp({
-
-    method: 'GET',
-    uri: `https://api.argentinadatos.com/v1/feriados/${year}`,
-
-    json: true,
-
-    headers: {
-
-      'Content-Type': 'application/json',
-
-      'Accept': 'application/json',
-
-    },
-
+/*const ANALYTICS_NAME = 'CHATBOT_ PRODUCTORES';
+const ANALYTICS_MEASUREMENT_ID = 'G-DYGZ97JCTK'
+const ANALYTICS_API_SECRET = 'm9ytEK1MRUG2udzm2r6ilg'
+const ANALYTICS_HOST = 'www.google-analytics.com'
+const ANALYTICS_PROTOCOL = 'https'
+const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
+*/
+const main = async () => {
+/*
+  const data = JSON.stringify({
+    client_id: 'CLIENT_ID', // A unique client identifier
+    events: [{
+      name: 'botmaker_event2',
+      params: {
+        param1: 'value1',
+        param2: 'value2',
+      },
+    }],
   });
 
-}
+  const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
 
-
-
-async function checkDate(fecha) {
-
-
-
-  // Verificar si es fin de semana (Sábado o Domingo) o si está fuera del horario de 9 a 21 hs
-
-  var diaSemana = fecha.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-
-  var horaLocal = new Date();
-
-  var horaArgentina = new Date(horaLocal.getTime() - (3 * 60 * 60 * 1000));
-
-  var horaActual = horaArgentina.getHours();
-
-
-
-  if ((diaSemana === 0 || diaSemana === 6) || horaActual < 8 || horaActual >= 19) {
-
-    // Mensaje si está fuera del horario de atención
-
-    //result.text("Te informamos que nuestro horario de atención es días hábiles de Lunes a Viernes de 9 a 21 hs. Te pedimos que vuelvas a escribirnos dentro de ese horario así podemos ayudarte.");
-
-    user.set('mensajeAtencion', "Te informamos que nuestro horario de atención de lunes a viernes de 8 a 19 hs. Te pedimos que vuelvas a escribirnos dentro de ese horario así podemos ayudarte.");
-
-    return false;
-
-  }
-
-
-
-  // Obtener información sobre feriados en Argentina para el año actual
-
-  try {
-
-    let feriados = await getFeriados(fecha.getFullYear());
-
-    // Verificar si la fecha actual es un feriado
-
-    var esFeriado = feriados.some(feriado => {
-      var fechaFeriado = new Date(feriado.fecha + " 03:00:00");
-
-      return fechaFeriado.toDateString() === fechaActual.toDateString();
-
-    });
-
-
-
-    if (esFeriado) {
-      // Mensaje si es feriado
-      /*result.text(`¡Hoy es feriado en Argentina, esperamos que estés descansando!.
-      Te pedimos que vuelvas a escribirnos el próximo día hábil de lunes a viernes de 9 a 21 así podemos ayudarte. Gracias`);*/
-      user.set('mensajeAtencion', `¡Hoy es feriado en Argentina, esperamos que estés descansando!.
-      Te pedimos que vuelvas a escribirnos el próximo día hábil de lunes a viernes de 8 a 19 hs. así podemos ayudarte. Gracias`);
-      return false;
-
+  bmconsole.log(url);
+  await rp({
+    uri: url,
+    method: 'POST',
+    body: data,
+    json: true,
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length,
     }
-    // Mensaje si está dentro del horario de atención y no es feriado
-    return true;
-  } catch (error) {
-    bmconsole.log("Error al obtener información sobre feriados:", error);
-    return true; // Se asume que no es feriado si hay un error en la obtención de datos
-  }
-
-}
-
-
-
-
-
-
-
-const main = async () => {
-  fechaActual = new Date();
-  bmconsole.log(fechaActual);
-  bmconsole.log(context.userData.PLATFORM_CONTACT_ID);
-  moment().date();
-  const enAtencion = await checkDate(fechaActual);
-  user.set('enAtencion', enAtencion);
-  user.set('tiempo_atencion', context.message.SESSION_CREATION_TIME)
+  }).then((resp) => {
+    bmconsole.log(resp);
+  }).catch((error) => {
+    bmconsole.log(error);
+  });
+  */
+ const fb = google.firebase;
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAlu4CDL3aXV3AK7asNv-kPtTNlh4peKcU",
+    authDomain: "chatbot-pas.firebaseapp.com",
+    projectId: "chatbot-pas",
+    storageBucket: "chatbot-pas.appspot.com",
+    messagingSenderId: "152382687481",
+    appId: "1:152382687481:web:19c8a3c1fe4fc0558e7a28",
+    measurementId: "G-TTSZWGGTY0"
+  };
+  const app = fb.initializeApp(firebaseConfig);
 };
 
-
-
 main()
-  .catch(err => {
-    const errorMessage = `[CA_NAME] Error ${err.message}`;
-    user.set('ca_error', errorMessage); // Set error variable with error message to see on Events
-    bmconsole.log(errorMessage); // Log Error
+  .then((x) => {
+    ;
   })
-  .finally(result.done);
 
+  .catch(err => {
+    bmconsole.error(`[ERROR]: ${err}`);
+    //result.text(JSON.parse(user.get('Polizas')));//`[ERROR]: ${err.message}`);
+  })
+  .finally(() => {
+    // Code on finish
+    result.done();
+  });

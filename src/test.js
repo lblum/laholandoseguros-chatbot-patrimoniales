@@ -8,20 +8,23 @@ user.set("JWToken", null);
 let utils = require('utils');
 let sendFile = require('send_document');
 
+const analytics1 = google.analytics({
+  version: 'v3',
+  auth: 'm9ytEK1MRUG2udzm2r6ilg'
+});
+
+const analytics = google.analytics('v3');
+
+ google.options({
+  auth: 'm9ytEK1MRUG2udzm2r6ilg'
+
+ });
+
 let Polizas = JSON.parse(user.get("Polizas"));
 let Poliza = Polizas[0];
 
 
 
 
-const main = async () => {
-  let pdf = await utils.getPolizaCompleta(Poliza);
-  sendFile.sendFile('xyzzy',pdf);
-};
 
-main()
-  .catch(err => {
-  })
-  .finally(() => {
-    result.done();
-  });
+result.done();
