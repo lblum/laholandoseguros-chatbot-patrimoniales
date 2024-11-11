@@ -125,6 +125,7 @@
             fecha: moment(p.fec_vig,'DD/MM/YYYY'),
             poliza: p.poliza,
             endoso: p.endoso,
+            formaPago: p.forma_pago,
           });      
         });
           
