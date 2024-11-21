@@ -61,7 +61,7 @@ const main = async () => {
         bmconsole.log(`Hubo un error al traer el documento de la póliza: ${error}`)
         // Agregado el caso de que sea CUPONERA pero con otra forma de pago
         if( codDocumento.toUpperCase() == 'CUPONERA' && Poliza.forma_pago != null && Poliza.forma_pago.toUpperCase() != 'CUPONERA' ){
-          result.text(`Esa póliza está configurada para pago vía ${Poliza.forma_pago}`);
+          result.text(`La póliza ${Poliza.poliza} se encuentra adherida a débito automático vía  ${Poliza.forma_pago}`);
         } else
           result.text(`No existe ese tipo de documento para esa póliza`);
         user.set('copiaPoliza', null);
