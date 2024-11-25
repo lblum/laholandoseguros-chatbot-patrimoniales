@@ -6,12 +6,11 @@ const ANALYTICS_PROTOCOL = 'https'
 const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
 const main = async () => {
   const data = JSON.stringify({
-    client_id: 'CHATBOT', // A unique client identifier
+    client_id: 'f3c51ccd-4fb0-48e8-95f6-ffb5bac39d9e', // A unique client identifier
     events: [{
       name: 'botmaker_event',
       params: {
-        param1: 'value1',
-        param2: 'value2',
+        usuario: user.get('codUsuario'),
       },
     }],
   });
@@ -26,7 +25,7 @@ const main = async () => {
     json: true,
     headers: {
       'Content-Type': 'application/json',
-      //'Content-Length': data.length,
+      'Content-Length': data.length,
     }
   }).then((resp) => {
     bmconsole.log(resp);

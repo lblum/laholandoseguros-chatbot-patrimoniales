@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "gtag-ga": "^1.0.4",
     "pdf-lib": "^1.17.1",
     "pdfkit": "^0.15.0"
   }
