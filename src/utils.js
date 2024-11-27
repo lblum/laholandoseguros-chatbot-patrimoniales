@@ -125,6 +125,7 @@
             fecha: moment(p.fec_vig,'DD/MM/YYYY'),
             poliza: p.poliza,
             endoso: p.endoso,
+            cod_asegu: p.cod_asegu,
           });      
         });
           
@@ -169,6 +170,7 @@
           tipo_emision: polizas[v.id].tipo_emision,
           fec_vig: polizas[v.id].fec_vig,
           forma_pago: polizas[v.id].forma_pago,
+          cod_asegu: polizas[v.id].cod_asegu,
         };
         //return polizas[v.id];
       });
