@@ -46,11 +46,14 @@ const main = async () => {
     token: user.get('JWTokenListados'),
     ok: ((resp) => {
       resp.p_list_exig.forEach(c => {
-        let importe = c.imp_pend_cuota.replaceAll(',','-').replaceAll('.',',').replaceAll('-','.').replaceAll(' ','');
-        cuotas.push({
-          fec_vto: c.vto_cuota,
-          texto: `Endoso ${c.endoso.replaceAll('.','')}, Cuota nro ${c.nro_cuota} Vto:${c.vto_cuota} $${importe}`,
-        });
+        let re = new RegExp(/[.\-, ]/g);
+        if (c.poliza.replace(re, '') == Poliza.poliza) {
+          let importe = c.imp_pend_cuota.replaceAll(',', '-').replaceAll('.', ',').replaceAll('-', '.').replaceAll(' ', '');
+          cuotas.push({
+            fec_vto: c.vto_cuota,
+            texto: `Endoso ${c.endoso.replaceAll('.', '')}, Cuota nro ${c.nro_cuota} Vto:${c.vto_cuota} $${importe}`,
+          });
+        }
       });
     }),
     error: ((error) => {

@@ -70,7 +70,6 @@ const main = async () => {
     token: user.get('JWTokenListados'),
 
     ok: ((resp) => {
-      bmconsole.log('1');
       if (resp.p_list_poliza_cartera.length == 0) {
         user.set('Polizas', JSON.stringify([]));
         user.set("cantidadDePolizas", 0);
@@ -91,7 +90,6 @@ const main = async () => {
         }
         user.set('Polizas', JSON.stringify(polizas));
         user.set("cantidadDePolizas", polizas.length);
-        bmconsole.log(polizas.length);
       }
     }),
     error: ((error) => {
@@ -107,7 +105,7 @@ const main = async () => {
 
 main()
   .then((x) => {
-    bmconsole.log('listo la obtener_polizas');
+    ;
   })
   .catch((err) => {
     bmconsole.error(`[ERROR]: ${err.message}`);
