@@ -24,11 +24,18 @@ const main = async () => {
   let Poliza = Polizas[i];
   let fileName = `${codDocumento}-${Poliza.poliza}.pdf`;
 
-  if (codDocumento == 'EMISION_CATALOGADO_FIRMA' ) {
+  await utils.logEvent({
+    "function": "poliza_obtener_documento",
+    "tipoFiltro": user.get('tipoFiltroPoliza'),
+    "tipoDocumento": codDocumento,
+    "seccion": Poliza.cod_sec,
+    "poliza": Poliza.poliza
+  });
+
+
+  if (codDocumento == 'EMISION_CATALOGADO_FIRMA') {
     // Póliza completa es un caso especial
     let doc = await utils.getPolizaCompleta(Poliza);
-    bmconsole.log(`${doc.length}`);
-    bmconsole.log(`${doc}`);
     await sendFile.sendFile(`POLIZA-COMPLETA-${Poliza.poliza}.pdf`, doc);
   } else {
     await utils.loginPolizas();
@@ -60,7 +67,7 @@ const main = async () => {
       error: ((error) => {
         bmconsole.log(`Hubo un error al traer el documento de la póliza: ${error}`)
         // Agregado el caso de que sea CUPONERA pero con otra forma de pago
-        if( codDocumento.toUpperCase() == 'CUPONERA' && Poliza.forma_pago != null && Poliza.forma_pago.toUpperCase() != 'CUPONERA' ){
+        if (codDocumento.toUpperCase() == 'CUPONERA' && Poliza.forma_pago != null && Poliza.forma_pago.toUpperCase() != 'CUPONERA') {
           result.text(`La póliza ${Poliza.poliza} se encuentra adherida a débito automático vía  ${Poliza.forma_pago}`);
         } else
           result.text(`No existe ese tipo de documento para esa póliza`);

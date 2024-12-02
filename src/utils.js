@@ -457,4 +457,40 @@ getURLPolizaCompleta: async(poliza) => {
   });
   return urlPC;
 
+},
+logEvent : async(data) => {
+  const ANALYTICS_MEASUREMENT_ID = 'G-DYGZ97JCTK'
+  const ANALYTICS_API_SECRET = 'rbSZv0NlQvanQFxFVkOqjw'
+  const ANALYTICS_HOST = 'www.google-analytics.com'
+  const ANALYTICS_PROTOCOL = 'https'
+  const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
+
+  data.usuario = user.get('codUsuario');
+
+  const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
+
+  let evt_data = {
+    client_id: 'f3c51ccd-4fb0-48e8-95f6-ffb5bac39d9e',
+    //timestamp_micros: TIMESTAMP,
+    non_personalized_ads: false,
+    events: [{
+      name: 'chatbot_pas',
+      params: data,
+    }],
+  };
+
+  await rp({
+    uri: url,
+    method: 'POST',
+    body: evt_data,
+    json: true,
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }).then((resp) => {
+    //bmconsole.log(resp);
+  }).catch((error) => {
+    //bmconsole.log(error);
+  });
+
 }
