@@ -38,7 +38,7 @@ const main = async () => {
       filtroPoliza = filtroPoliza.substring(0, 3) + '-' + filtroPoliza.substring(3, 6);
     }
   } else if (tipoFiltroPoliza == 'P') {
-    filtroPoliza = user.get('numeroPoliza') ?? '4121284';
+    filtroPoliza = user.get('numeroPoliza') ?? '5936614';
   }
   filtroPoliza = filtroPoliza.toUpperCase()
 
@@ -63,7 +63,9 @@ const main = async () => {
     "p_regxpag": 25,
     "p_tiene_siniestro": null
   };
+  bmconsole.log(JSON.stringify(data));
 
+  let polizasDebitoAutomatico = false;
   return await utils.getRESTData({
     uri: POLIZAS_CARTERA_URL,
     data: data,
@@ -84,6 +86,8 @@ const main = async () => {
           if (codDocumento.toUpperCase() != 'CUPONERA' || (polizas_all[i].forma_pago != null && polizas_all[i].forma_pago.toUpperCase() == 'CUPONERA'))
             polizas.push(polizas_all[i]);
         }
+        if ( codDocumento.toUpperCase() == 'CUPONERA' && polizas.length == 0)
+          polizasDebitoAutomatico = true;
         if (polizas.length >= 10) {
           bmconsole.error(`[ERROR]: demasiadas pólizas con ese asegurado. Mostrando solo las primeras 10`);
           polizas = polizas.slice(0, 10);

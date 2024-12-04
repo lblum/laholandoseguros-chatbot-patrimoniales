@@ -6,7 +6,7 @@ let sendFile = require('send_document');
 const main = async () => {
   user.set('error', null);
 
-  let codDocumento = 'EMISION_CATALOGADO_FIRMA';
+  let codDocumento = 'CUPONERA';
 
   if (context.params.codDocumento != null && (context.params.codDocumento ?? '') != '')
     codDocumento = context.params.codDocumento;
