@@ -468,6 +468,7 @@ logEvent : async(data) => {
   data.usuario = user.get('codUsuario');
 
   const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
+  const TIMESTAMP = moment().valueOf().toString() + '000';
 
   let evt_data = {
     client_id: 'f3c51ccd-4fb0-48e8-95f6-ffb5bac39d9e',
@@ -479,7 +480,7 @@ logEvent : async(data) => {
     }],
   };
 
-  await rp({
+  return await rp({
     uri: url,
     method: 'POST',
     body: evt_data,
@@ -488,9 +489,9 @@ logEvent : async(data) => {
       'Content-Type': 'application/json',
     }
   }).then((resp) => {
-    //bmconsole.log(resp);
+    bmconsole.log(resp);
   }).catch((error) => {
-    //bmconsole.log(error);
+    bmconsole.log(error);
   });
 
 }
