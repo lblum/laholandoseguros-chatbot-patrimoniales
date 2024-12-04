@@ -1,7 +1,7 @@
 const ANALYTICS_NAME = 'CHATBOT_PRODUCTORES';
-const ANALYTICS_MEASUREMENT_ID = 'G-DYGZ97JCTK'
-const ANALYTICS_API_SECRET = 'rbSZv0NlQvanQFxFVkOqjw'
-const ANALYTICS_HOST = 'www.google-analytics.com'
+const ANALYTICS_MEASUREMENT_ID = 'G-SZG7S4T45N';
+const ANALYTICS_API_SECRET = 'Y9jUmvz2Q3GK5zxI0JEOeg';
+const ANALYTICS_HOST = 'www.google-analytics.com';
 const ANALYTICS_PROTOCOL = 'https'
 const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
 const TIMESTAMP = moment().valueOf().toString() + '000';
@@ -20,7 +20,7 @@ const main = async () => {
 
   const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
 
-  rp({
+  return await rp({
     uri: url,
     method: 'POST',
     body: data,
@@ -29,9 +29,9 @@ const main = async () => {
       'Content-Type': 'application/json',
     }
   }).then((resp) => {
-    //bmconsole.log(resp);
+    bmconsole.log(resp);
   }).catch((error) => {
-    //bmconsole.log(error);
+    bmconsole.log(error);
   });
 };
 

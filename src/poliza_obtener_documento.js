@@ -24,13 +24,13 @@ const main = async () => {
   let Poliza = Polizas[i];
   let fileName = `${codDocumento}-${Poliza.poliza}.pdf`;
 
-  await utils.logEvent({
+  /*await utils.logEvent({
     "function": "poliza_obtener_documento",
     "tipoFiltro": user.get('tipoFiltroPoliza'),
     "tipoDocumento": codDocumento,
     "seccion": Poliza.cod_sec,
     "poliza": Poliza.poliza
-  });
+  });*/
 
 
   if (codDocumento == 'EMISION_CATALOGADO_FIRMA') {
