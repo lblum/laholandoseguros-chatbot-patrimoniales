@@ -83,7 +83,7 @@ const main = async () => {
         let polizas = [];
         let codDocumento = user.get("consultaPoliza") ?? '';
         for (let i = 0; i < polizas_all.length; i++) {
-          if (codDocumento.toUpperCase() != 'CUPONERA' || (polizas_all[i].forma_pago != null && polizas_all[i].forma_pago.toUpperCase() == 'CUPONERA'))
+          //if (codDocumento.toUpperCase() != 'CUPONERA' || (polizas_all[i].forma_pago != null && polizas_all[i].forma_pago.toUpperCase() == 'CUPONERA'))
             polizas.push(polizas_all[i]);
         }
         if ( codDocumento.toUpperCase() == 'CUPONERA' && polizas.length == 0)
