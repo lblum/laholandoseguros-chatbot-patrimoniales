@@ -1,7 +1,10 @@
 // Inicializo las variables para test local
-user.set("codUsuario", "PRODLROJAS");
-user.set("userPassword", "prod120108");
-user.set("tipoPoliza", 'Acc. Personales');
+//user.set("codUsuario", "PRODLROJAS");
+//user.set("userPassword", "prod120108");
+//user.set("tipoPoliza", 'Acc. Personales');
+user.set("codUsuario", "PRODEGUTIERREZ");
+user.set("userPassword", "20RBVIDEO22");
+user.set("tipoPoliza", 'Automotores');
 user.set("JWToken", null);
 
 /*let utils = require('utils');

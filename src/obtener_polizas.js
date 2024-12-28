@@ -13,7 +13,7 @@ const main = async () => {
 
   let tipoPoliza = user.get("tipoPoliza");
 
-  let tipoFiltroPoliza = user.get('tipoFiltroPoliza') ?? 'P';
+  let tipoFiltroPoliza = user.get('tipoFiltroPoliza') ?? 'D';
 
   let filtroPoliza = null;
   user.set('error', null);
@@ -78,10 +78,10 @@ const main = async () => {
         user.set("listadoPolizas", JSON.stringify([]));
         return;
       } else {
-        let polizas_all = utils.getUniquePolizas(resp.p_list_poliza_cartera);
+        let codDocumento = user.get("consultaPoliza") ?? '';
+        let polizas_all = utils.getUniquePolizas(resp.p_list_poliza_cartera,codDocumento);
         // En el caso de que hayan pedido cuponera, elimino las que tienen otras formas de pago
         let polizas = [];
-        let codDocumento = user.get("consultaPoliza") ?? '';
         for (let i = 0; i < polizas_all.length; i++) {
           //if (codDocumento.toUpperCase() != 'CUPONERA' || (polizas_all[i].forma_pago != null && polizas_all[i].forma_pago.toUpperCase() == 'CUPONERA'))
             polizas.push(polizas_all[i]);

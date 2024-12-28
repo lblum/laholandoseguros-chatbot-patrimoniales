@@ -112,21 +112,23 @@
         return found.id;
     return 0; // TODO OJO!!!
   },
-  getUniquePolizas: (polizas) => {
+  getUniquePolizas: (polizas,tipoDocumento) => {
     try {
-      //result.text(polizas.length);
-      //result.text(JSON.stringify(polizas));
       let i = 0;
       let retVal = [];
       try {
         polizas.forEach(p => {
-          retVal.push({
-            id: i++,
-            fecha: moment(p.fec_vig,'DD/MM/YYYY'),
-            poliza: p.poliza,
-            endoso: p.endoso,
-            cod_asegu: p.cod_asegu,
-          });      
+          // para credencial o certificado mercosur, solo endoso 0
+          if ( (tipoDocumento != 'CREDENCIAL' && tipoDocumento != 'CERTIF_MERCOSUR') || p.endoso == '0' ) {
+            retVal.push({
+              id: i,
+              fecha: moment(p.fec_vig,'DD/MM/YYYY'),
+              poliza: p.poliza,
+              endoso: p.endoso,
+              cod_asegu: p.cod_asegu,
+            });      
+          }
+          i++;
         });
           
       } catch (error) {
