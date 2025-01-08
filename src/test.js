@@ -7,7 +7,16 @@ user.set("userPassword", "20RBVIDEO22");
 user.set("tipoPoliza", 'Automotores');
 user.set("JWToken", null);
 
-/*let utils = require('utils');
+let utils = require('utils');
+
+utils.logEvent({
+  "function": "test",
+  "tipoFiltro": user.get('tipoFiltroPoliza'),
+  "tipoDocumento": 'EMISION_CATALOGADO_FIRMA',
+  "seccion": "3",
+  "poliza": 0
+});
+/*
 let sendFile = require('send_document');
 
 const analytics1 = google.analytics({

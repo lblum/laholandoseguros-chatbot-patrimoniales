@@ -461,12 +461,13 @@ getURLPolizaCompleta: async(poliza) => {
 
 },
 logEvent : async(data) => {
-  const ANALYTICS_MEASUREMENT_ID = 'G-SZG7S4T45N';
-  const ANALYTICS_API_SECRET = 'Y9jUmvz2Q3GK5zxI0JEOeg';
-  const ANALYTICS_HOST = 'www.google-analytics.com'
+  const ANALYTICS_NAME = 'CHATBOT_PRODUCTORES';
+  const ANALYTICS_MEASUREMENT_ID = 'G-DYGZ97JCTK';
+  const ANALYTICS_API_SECRET = 'rbSZv0NlQvanQFxFVkOqjw';
+  const ANALYTICS_HOST = 'www.google-analytics.com';
   const ANALYTICS_PROTOCOL = 'https'
   const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
-
+  
   data.usuario = user.get('codUsuario');
 
   const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
@@ -474,6 +475,7 @@ logEvent : async(data) => {
 
   let evt_data = {
     client_id: 'f3c51ccd-4fb0-48e8-95f6-ffb5bac39d9e',
+    user_id: user.get('codUsuario'),
     timestamp_micros: TIMESTAMP,
     non_personalized_ads: false,
     events: [{
