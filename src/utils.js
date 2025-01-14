@@ -460,7 +460,7 @@ getURLPolizaCompleta: async(poliza) => {
   return urlPC;
 
 },
-logEvent : async(data) => {
+logEvent : async(evtName,data) => {
   const ANALYTICS_NAME = 'CHATBOT_PRODUCTORES';
   const ANALYTICS_MEASUREMENT_ID = 'G-DYGZ97JCTK';
   const ANALYTICS_API_SECRET = 'rbSZv0NlQvanQFxFVkOqjw';
@@ -468,18 +468,18 @@ logEvent : async(data) => {
   const ANALYTICS_PROTOCOL = 'https'
   const ANALYTICS_URI = `/mp/collect?measurement_id=${ANALYTICS_MEASUREMENT_ID}&api_secret=${ANALYTICS_API_SECRET}`;
   
-  data.usuario = user.get('codUsuario');
+  data.usuario = user.get('codUsuario').toUpperCase();
 
   const url = `${ANALYTICS_PROTOCOL}://${ANALYTICS_HOST}${ANALYTICS_URI}`
   const TIMESTAMP = moment().valueOf().toString() + '000';
 
   let evt_data = {
     client_id: 'f3c51ccd-4fb0-48e8-95f6-ffb5bac39d9e',
-    user_id: user.get('codUsuario'),
+    user_id: user.get('codUsuario').toUpperCase(),
     timestamp_micros: TIMESTAMP,
     non_personalized_ads: false,
     events: [{
-      name: 'chatbot_pas',
+      name: evtName,
       params: data,
     }],
   };

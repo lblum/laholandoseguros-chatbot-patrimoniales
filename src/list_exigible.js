@@ -39,6 +39,12 @@ const main = async () => {
     "p_fecha_hasta": maxDate,
   };
 
+   await utils.logEvent('conocer_deuda',
+      {
+        "tipoFiltro": user.get('tipoFiltroPoliza'),
+        "seccion": Poliza.cod_sec,
+        "poliza": Poliza.poliza
+      });
 
   await utils.getRESTData({
     uri: OBTENER_EXIGIBLE_URL,

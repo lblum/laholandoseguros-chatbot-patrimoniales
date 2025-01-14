@@ -24,13 +24,20 @@ const main = async () => {
   let Poliza = Polizas[i];
   let fileName = `${codDocumento}-${Poliza.poliza}.pdf`;
 
-  await utils.logEvent({
-    "function": "poliza_obtener_documento",
-    "tipoFiltro": user.get('tipoFiltroPoliza'),
-    "tipoDocumento": codDocumento,
-    "seccion": Poliza.cod_sec,
-    "poliza": Poliza.poliza
-  });
+  await utils.logEvent('poliza_obtener_documento',
+    {
+      "tipoFiltro": user.get('tipoFiltroPoliza'),
+      "seccion": Poliza.cod_sec,
+      "poliza": Poliza.poliza
+    });
+  bmconsole.log('poliza_obtener_documento');
+  await utils.logEvent(codDocumento,
+    {
+      "tipoFiltro": user.get('tipoFiltroPoliza'),
+      "seccion": Poliza.cod_sec,
+      "poliza": Poliza.poliza
+    });
+    bmconsole.log(codDocumento);
 
 
   if (codDocumento == 'EMISION_CATALOGADO_FIRMA') {

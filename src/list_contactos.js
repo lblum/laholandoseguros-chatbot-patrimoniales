@@ -29,11 +29,14 @@ const main = async () => {
 
   await utils.loginGeneral();
 
+  await utils.logEvent('obtener_contactos',
+    {
+    });
 
-  var finalData =  await getContactData(1);
+  var finalData = await getContactData(1);
   //var y = await getContactData(2);
 
-  user.set('contactList',finalData.join('\n'));
+  user.set('contactList', finalData.join('\n'));
 };
 
 main()
